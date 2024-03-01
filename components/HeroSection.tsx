@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const HeroSection = () => {
   return (
-    <section className="flex hero-bg lg:h-96 p-20 w-full flex-col sm:flex-row sm:items-center">
+    <section className="hero-bg flex w-full flex-col p-20 sm:flex-row sm:items-center lg:h-96">
       <Image
         src="/assets/favicon/favicon.png"
         alt="hero"

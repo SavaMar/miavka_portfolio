@@ -9,7 +9,7 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
 });
 
-const short_stack = Short_Stack({
+const shortStack = Short_Stack({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--font-short-stack",
@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${short_stack.variable} ${montserrat.variable}`}>
+      <body className={`${shortStack.variable} ${montserrat.variable}`}>
         {children}
       </body>
     </html>
