@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* import bg from 'assets/img/hero-bg.png'; */
+
+@layer utilities {
+  .hero-bg {
+    @apply bg-gradient-to-r from-purple-500 to-pink-500;
+  }
+  .bg-img {
+    background-image: url("../public/assets/img/.hero-bg.png");
+    height: 500px;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}

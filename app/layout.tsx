@@ -1,4 +1,4 @@
-/* eslint-disable */
+import React from "react";
 import type { Metadata } from "next";
 import { Montserrat, Short_Stack } from "next/font/google";
 import "./globals.css";
