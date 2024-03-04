@@ -13,4 +13,10 @@
     background-size: cover;
     background-repeat: no-repeat;
   }
+  .monserrat {
+    font-family: var(--font-montserrat);
+  }
+  .stack {
+    font-family: var(--font-short-stack);
+  }
 }
