@@ -4,19 +4,19 @@ import Image from "next/image";
 
 const Navbar = () => {
   return (
-    <nav className="hero-bg flex flex-wrap items-center justify-between p-6 font-bold text-purple-950">
+    <nav className="hero-bg monserrat-a flex flex-wrap items-center justify-between p-6 font-bold text-black">
       <div className="mr-auto flex flex-col pl-0 lg:flex-row">
         <Link
           href="/"
           className="block w-full grow transition ease-in-out hover:text-slate-300 lg:flex lg:w-auto lg:items-center"
         >
           <Image
-            src="/assets/favicon/favicon.png"
+            src="/assets/img/logo.png"
             width={23}
             height={23}
             alt="Miavka logo"
           />
-          <p className="pl-3 max-sm:hidden">Mari Miavka</p>
+          <p className="pl-3  max-sm:hidden">Mari Miavka</p>
         </Link>
       </div>
 

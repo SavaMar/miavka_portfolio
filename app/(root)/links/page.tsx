@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 const page = () => {
   return (
@@ -121,6 +122,14 @@ const page = () => {
           My main instagram
         </Button>
       </a>
+
+      <Image
+        className="mt-10 inline-block rounded-full"
+        src="/assets/img/avatar.jpg"
+        alt="hero"
+        width={150}
+        height={120}
+      ></Image>
     </div>
   );
 };

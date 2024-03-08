@@ -13,6 +13,10 @@
     background-size: cover;
     background-repeat: no-repeat;
   }
+  .monserrat-a {
+    font-family: var(--font-montserrat-alternates);
+  }
+
   .monserrat {
     font-family: var(--font-montserrat);
   }

@@ -6,6 +6,9 @@
     "prettier"
   ],
   "rules": {
-    "camelcase": ["error", { "allow": ["Short_Stack"] }]
+    "camelcase": [
+      "error",
+      { "allow": ["Short_Stack", "Montserrat_Alternates"] }
+    ]
   }
 }

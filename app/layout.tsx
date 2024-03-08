@@ -1,12 +1,22 @@
 import React from "react";
 import type { Metadata } from "next";
-import { Montserrat, Short_Stack } from "next/font/google";
+import {
+  Montserrat,
+  Short_Stack,
+  Montserrat_Alternates,
+} from "next/font/google";
 import "./globals.css";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-montserrat",
+});
+
+const montserratA = Montserrat_Alternates({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-montserrat-alternates",
 });
 
 const shortStack = Short_Stack({
@@ -28,7 +38,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${shortStack.variable} ${montserrat.variable}`}>
+      <body
+        className={`${shortStack.variable} ${montserrat.variable} ${montserratA.variable}`}
+      >
         {children}
       </body>
     </html>

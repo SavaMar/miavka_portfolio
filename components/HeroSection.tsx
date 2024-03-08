@@ -3,15 +3,18 @@ import Image from "next/image";
 
 const HeroSection = () => {
   return (
-    <section className="hero-bg flex w-full flex-col p-20 sm:flex-row sm:items-center lg:h-96">
+    <section className="hero-bg flex w-full flex-col p-20 pr-10 sm:flex-row sm:items-center lg:h-96">
       <Image
-        src="/assets/favicon/favicon.png"
+        src="/assets/img/avatar.jpg"
         alt="hero"
-        width={300}
-        height={300}
+        width={440}
+        height={250}
+        className=" rounded-full"
       />
-      <div>
-        <h1 className="text-5xl font-bold">Mari Miavka</h1>
+      <div className="ml-10">
+        <h1 className="monserrat-a mb-5 text-8xl font-extrabold">
+          Mari Miavka
+        </h1>
         <p className="text-lg">
           Photography. Illustration. Tattoo. Design. Art.
         </p>
