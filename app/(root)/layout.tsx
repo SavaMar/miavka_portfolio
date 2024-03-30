@@ -7,6 +7,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <main className="relative bg-stone-950">
       <Navbar />
       <section className="flex min-h-screen flex-1 flex-col max-md:pb-14">
+        <h1 className="p-5 uppercase text-white">
+          WEb site in development mode
+        </h1>
         {children}
       </section>
       <Footer />
