@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import {
   Montserrat,
   Short_Stack,
@@ -40,6 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <GoogleAnalytics />
+      <Analytics />
       <body
         className={`${shortStack.variable} ${montserrat.variable} ${montserratA.variable}`}
       >
