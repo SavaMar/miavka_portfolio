@@ -6,6 +6,7 @@ import {
   Montserrat_Alternates,
 } from "next/font/google";
 import "./globals.css";
+import GoogleAnalytics from "@/components/shared/GoogleAnalytics";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -38,6 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleAnalytics />
       <body
         className={`${shortStack.variable} ${montserrat.variable} ${montserratA.variable}`}
       >
