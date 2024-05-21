@@ -9,9 +9,9 @@ export const photoLinks: PhotoLink[] = [
   },
   {
     imgURL: "/assets/img/links/photography.jpg",
-    route: "/photography",
-    label: "photography",
-    linkName: "Photography",
+    route: "/blog",
+    label: "blog",
+    linkName: "Blog",
   },
   {
     imgURL: "/assets/img/links/tattoo.jpg",

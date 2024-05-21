@@ -1,17 +1,17 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { photoLinks } from "@/constants/PhotoLinks";
+import { photoLinksbjj } from "@/constants/PhotoLinksBjj";
 
-const PhotoLinks = () => {
+const PhotoLinksBjj = () => {
   return (
     <>
-      {photoLinks.map((item) => {
+      {photoLinksbjj.map((item) => {
         return (
           <Link
             key={item.label}
             href={item.route}
-            className="mt-5 cursor-pointer rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-black transition delay-75 ease-in-out hover:text-white"
+            className="mt-5 w-80 cursor-pointer rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-black transition delay-75 ease-in-out hover:text-white"
           >
             <div className="monserrat-a flex w-full place-content-center items-center rounded-t-lg bg-pink-900 py-2 text-xl font-extrabold tracking-wide ">
               <h2 className="flex">{item.linkName}</h2>
@@ -30,4 +30,4 @@ const PhotoLinks = () => {
   );
 };
 
-export default PhotoLinks;
+export default PhotoLinksBjj;

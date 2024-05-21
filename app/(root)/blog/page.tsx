@@ -5,12 +5,12 @@ const page = () => {
   return (
     <section>
       <HeroSection
-        imageName="photography"
+        imageName="Blog"
         backgroundClass=""
-        mainTitle="Creative Photography"
+        mainTitle="Blog"
         descriptionText="Photography. Video. Unique personal style."
       />
-      <p>Photography</p>
+      <p>Blog</p>
     </section>
   );
 };

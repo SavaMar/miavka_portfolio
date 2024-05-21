@@ -1,10 +1,4 @@
-type LinkLable =
-  | "bjj"
-  | "photography"
-  | "tattoo"
-  | "art"
-  | "development"
-  | "shop";
+type LinkLable = "bjj" | "blog" | "tattoo" | "art" | "development" | "shop";
 
 export interface PhotoLink {
   imgURL: string;
@@ -17,7 +11,7 @@ type SocialLinkLabel =
   | "printshop"
   | "main_instagram"
   | "art_tattoo"
-  | "photography"
+  | "blog"
   | "bjj_photos"
   | "zla_miavka"
   | "gumroad"
@@ -29,4 +23,13 @@ export interface SocialLink {
   title: string;
   label: SocialLinkLabel;
   buttonClass: string;
+}
+
+type LinkLableBjj = "photography" | "rashguards" | "merch";
+
+export interface PhotoLinkBjj {
+  imgURL: string;
+  route: string;
+  label: LinkLableBjj;
+  linkName: string;
 }
