@@ -14,6 +14,7 @@ type SocialLinkLabel =
   | "blog"
   | "bjj_photos"
   | "zla_miavka"
+  | "photography"
   | "gumroad"
   | "tg_chanell"
   | "youtube";
