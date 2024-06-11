@@ -8,7 +8,7 @@ const page = () => {
       <HeroSection
         imageName="bjj"
         backgroundClass=""
-        mainTitle="Brasilian Jiu Jitsu"
+        mainTitle="Brazilian Jiu Jitsu"
         descriptionText="Photography. Video. Reels. Custom rashguards"
       />
       <div className="my-10 flex w-full justify-end gap-6 p-5 text-slate-300 sm:flex-row sm:items-center">
