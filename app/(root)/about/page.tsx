@@ -19,7 +19,7 @@ const page = () => {
           <div className="monserrat-a my-color mb-5 flex text-4xl font-extrabold sm:text-6xl md:text-6xl lg:text-7xl">
             {/* instagram */}
             <a
-              href="https://www.instagram.com/p/C8Hx7LZRMWn/?img_index=1"
+              href="https://www.instagram.com/mari_miavka"
               className="cursor-pointer"
             >
               <svg
@@ -37,7 +37,7 @@ const page = () => {
 
             {/* youtube */}
             <a
-              href="https://www.instagram.com/p/C8Hx7LZRMWn/?img_index=1"
+              href="https://www.youtube.com/@MariMiavkaWorld"
               className="ml-2 cursor-pointer"
             >
               <svg
