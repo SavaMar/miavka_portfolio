@@ -1,4 +1,3 @@
-import HeroSection from "@/components/HeroSection";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
@@ -6,29 +5,21 @@ import React from "react";
 const page = () => {
   return (
     <section>
-      <HeroSection
-        imageName="Blog"
-        backgroundClass=""
-        mainTitle="Blog"
-        descriptionText="Photography. Video. Unique personal style."
-      />
-      <div className="flex w-full flex-col-reverse justify-between gap-4 text-slate-300 sm:flex-row sm:items-center sm:px-14">
-        <div>
-          <p className="my-20">
-            This website is in development moode. I&apos;m coding it by myself,
-            so it will be soon ready :D
+      <section className="hero-bg flex w-full flex-col px-20 pr-10 sm:flex-row sm:items-center lg:h-60">
+        <div className="sm:ml-5 xl:ml-10">
+          <p className="monserrat-a my-color mb-5 text-5xl font-extrabold sm:text-6xl md:text-6xl lg:text-8xl">
+            Blog
           </p>
-          <p>miavka.video@gmail.com</p>
-          <p className="mb-10">(+41) 078 951 42 66 Telegram/Whatsapp</p>
-
-          <Link href="/links" className="mt-10">
-            <Button
-              variant="outline"
-              className="hero-bg text-slate-950 hover:text-zinc-50"
-            >
-              Instagram ++
-            </Button>
-          </Link>
+          <p className="not-white fw-300 text-lg">
+            I'm sharing my way here and tips for finding your own style and how
+            to work wit your inneral creativity. My mission is inspire others
+            spirits.
+          </p>
+        </div>
+      </section>
+      <div className="mb-24 p-20">
+        <div className="w-full rounded-lg bg-slate-300  p-16">
+          <p>This part is in development mode. I'll open it soon :)</p>
         </div>
       </div>
     </section>
