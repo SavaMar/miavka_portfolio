@@ -1,7 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
+import Image from "next/image";
 import React from "react";
+import { getSortedArticlesData } from "../../../lib/markdownUtils";
 
-const page = () => {
+// Fetch the data directly in the component
+export default async function BlogPage() {
+  const allArticlesData = getSortedArticlesData();
+
   return (
     <section>
       <section className="hero-bg flex w-full flex-col px-20 pr-10 sm:flex-row sm:items-center lg:h-60">
@@ -11,18 +16,39 @@ const page = () => {
           </p>
           <p className="not-white fw-300 text-lg">
             I'm sharing my way here and tips for finding your own style and how
-            to work wit your inneral creativity. My mission is inspire others
+            to work with your inner creativity. My mission is to inspire others'
             spirits.
           </p>
         </div>
       </section>
       <div className="mb-24 p-20">
-        <div className="w-full rounded-lg bg-slate-300  p-16">
-          <p>This part is in development mode. I'll open it soon :)</p>
+        <div className="w-full rounded-lg bg-slate-300 p-16">
+          {allArticlesData.map(({ id, title, date, coverImage }) => (
+            <div
+              key={id}
+              className="mb-8 flex flex-col items-center sm:flex-row"
+            >
+              <Image
+                src={coverImage}
+                width={100}
+                height={100}
+                alt={title}
+                className="mb-4 h-40 w-full rounded-lg object-cover sm:mb-0 sm:mr-6 sm:w-1/3"
+              />
+              <div className="flex flex-col">
+                <h2 className="mb-2 text-2xl font-semibold">{title}</h2>
+                <p className="mb-4 text-gray-500">{date}</p>
+                <a
+                  href={`/blog/${id}`}
+                  className="text-blue-500 hover:underline"
+                >
+                  Read More
+                </a>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
   );
-};
-
-export default page;
+}
