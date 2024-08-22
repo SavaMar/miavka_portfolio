@@ -2,6 +2,8 @@
 import Image from "next/image";
 import React from "react";
 import { getSortedArticlesData } from "../../../lib/markdownUtils";
+import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 
 // Fetch the data directly in the component
 export default async function BlogPage() {
@@ -23,10 +25,11 @@ export default async function BlogPage() {
       </section>
       <div className="mb-24 p-20">
         <div className="w-full rounded-lg bg-slate-300 p-16">
-          {allArticlesData.map(({ id, title, date, coverImage }) => (
-            <div
+          {allArticlesData.map(({ id, title, date, coverImage, tags }) => (
+            <Link
+              href={`/blog/${id}`}
               key={id}
-              className="mb-8 flex flex-col items-center sm:flex-row"
+              className="mb-8 flex cursor-pointer flex-col items-center transition duration-300 ease-in-out hover:scale-105 hover:bg-slate-400 hover:ease-in-out sm:flex-row"
             >
               <Image
                 src={coverImage}
@@ -38,14 +41,15 @@ export default async function BlogPage() {
               <div className="flex flex-col">
                 <h2 className="mb-2 text-2xl font-semibold">{title}</h2>
                 <p className="mb-4 text-gray-500">{date}</p>
-                <a
-                  href={`/blog/${id}`}
-                  className="text-blue-500 hover:underline"
-                >
-                  Read More
-                </a>
+                <div className="mb-4">
+                  {tags.map((tag) => (
+                    <Badge variant="secondary" key={tag} className="mr-1">
+                      #{tag}
+                    </Badge>
+                  ))}
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -18,7 +18,7 @@ export default async function PostPage({ params }: { params: { id: string } }) {
   const postData = await getPostData(params.id);
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-8">
+    <div className="mx-auto max-w-4xl bg-slate-300 px-4 py-8">
       <h1 className="mb-4 text-4xl font-bold">{postData.title}</h1>
       <p className="mb-8 text-gray-500">{postData.date}</p>
       <Image

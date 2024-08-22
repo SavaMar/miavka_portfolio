@@ -12,6 +12,7 @@ interface ArticleSummaryData {
   title: string;
   date: string;
   coverImage: string;
+  tags: string[];
 }
 
 interface ArticleData extends ArticleSummaryData {
@@ -28,10 +29,11 @@ export function getSortedArticlesData(): ArticleSummaryData[] {
 
     const matterResult = matter(fileContents);
 
-    const { title, date, coverImage } = matterResult.data as {
+    const { title, date, coverImage, tags } = matterResult.data as {
       title: string;
       date: string;
       coverImage: string;
+      tags: string[];
     };
 
     return {
@@ -39,6 +41,7 @@ export function getSortedArticlesData(): ArticleSummaryData[] {
       title,
       date,
       coverImage,
+      tags, // Include tags in the returned data
     };
   });
 
@@ -57,10 +60,11 @@ export async function getPostData(id: string): Promise<ArticleData> {
     .process(matterResult.content);
   const contentHtml = processedContent.toString();
 
-  const { title, date, coverImage } = matterResult.data as {
+  const { title, date, coverImage, tags } = matterResult.data as {
     title: string;
     date: string;
     coverImage: string;
+    tags: string[];
   };
 
   return {
@@ -68,6 +72,7 @@ export async function getPostData(id: string): Promise<ArticleData> {
     title,
     date,
     coverImage,
+    tags, // Include tags in the returned data
     contentHtml,
   };
 }
