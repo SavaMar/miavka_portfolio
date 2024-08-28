@@ -1,41 +1,37 @@
-/* eslint-disable react/no-unescaped-entities */
+// app/photo/page.tsx
 "use client";
 import React from "react";
 import Link from "next/link";
-
-const collections = [
-  { name: "Buren", id: "buren" },
-  { name: "Self Portrait", id: "self-portrait" },
-  { name: "Cokin Filters", id: "cokin-filters" },
-  { name: "My Vision", id: "my-vision" },
-  { name: "All Around", id: "all-around" },
-];
+import collections from "@/types/collections"; // Adjust the import path according to your project structure
+import Image from "next/image";
+import HeroSection from "@/components/shared/HeroSection";
 
 const page = () => {
   return (
     <section>
-      <section className="hero-bg flex w-full flex-col px-20 pr-10 sm:flex-row sm:items-center lg:h-60">
-        <div className="sm:ml-5 xl:ml-10">
-          <p className="monserrat-a my-color mb-5 text-5xl font-extrabold sm:text-6xl md:text-6xl lg:text-8xl">
-            Photo
-          </p>
-          <p className="not-white fw-300 text-lg">
-            Here are my photography projects, each with its own unique emotion
-            and perspective. For me, photography isn't just about capturing a
-            moment; it's about opening a doorway to creativity, inspiration, and
-            feelings.
-          </p>
-        </div>
-      </section>
-      <div className="mb-24 p-24">
-        <div className="hero-bg grid w-full grid-cols-1 justify-between justify-items-stretch gap-6 p-16 text-slate-300 md:grid-cols-2 lg:grid-cols-6">
+      <HeroSection
+        title="Photo"
+        description="Here are my photography projects, each with its own unique emotion and perspective. For me, photography isn't just about capturing a moment; it's about opening a doorway to creativity, inspiration, and feelings."
+      />
+      <div className="mb-24 md:p-24">
+        <div className="grid w-full grid-cols-1 justify-between justify-items-stretch gap-6 p-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {collections.map((collection) => (
             <Link
               key={collection.id}
-              href={`photo/${collection.id}`}
-              className="rounded-lg bg-slate-500 p-4 shadow-lg transition hover:bg-slate-600"
+              href={`/photo/${collection.id}`}
+              className="hero-bg flex flex-col items-center justify-center rounded-lg p-4 shadow-lg transition delay-75 hover:scale-110 hover:border-my-color  hover:ease-in-out"
             >
-              <p className="text-xl font-semibold">{collection.name}</p>
+              <Image
+                src={collection.photo}
+                alt={collection.name}
+                width={300}
+                height={300}
+                className="max-h-40 w-full rounded-lg object-cover"
+              />
+              <p className="monserrat-a py-5 text-4xl font-semibold text-my-color md:text-2xl">
+                {collection.name}
+              </p>
+              <p className="mt-2 text-sm text-slate-300">{collection.text}</p>
             </Link>
           ))}
         </div>

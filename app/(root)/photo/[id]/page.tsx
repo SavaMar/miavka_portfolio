@@ -3,6 +3,8 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import Image from "next/image";
 import { useState } from "react";
 import Masonry from "react-masonry-css";
+import HeroSection from "@/components/shared/HeroSection";
+import collections from "@/types/collections";
 
 // Define the mapping of collection IDs to their respective number of images
 const collectionImageCounts: Record<string, number> = {
@@ -20,31 +22,35 @@ const breakpointColumnsObj = {
   500: 2,
 };
 
-export default function GalleryPage({ params }: { params: { id: string } }) {
+interface GalleryPageProps {
+  params: {
+    id: string;
+  };
+}
+
+export default function GalleryPage({ params }: GalleryPageProps) {
   const { id } = params;
-  const imageCount = collectionImageCounts[id] || 0; // Get the number of images for the collection
+  const collection = collections.find((col) => col.id === id);
+
+  // Handle the case where the collection is not found
+  if (!collection) {
+    return <p>No such collection found.</p>;
+  }
+
+  const { name, text } = collection;
+  const imageCount = collectionImageCounts[id] || 0;
   const imageUrls = Array.from(
     { length: imageCount },
-    (_, i) =>
-      `https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/photos/${id}/${i + 1}.jpg`
+    (_, index) =>
+      `https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/photos/${id}/${index + 1}.jpg`
   );
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [isOpen, setIsOpen] = useState(false); // Manage dialog open state
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <section>
-      {/* <div className="flex w-full p-6"> */}
-      <section className="hero-bg flex w-full flex-col px-20 pr-10 sm:flex-row sm:items-center lg:h-60">
-        <div className="sm:ml-5 xl:ml-10">
-          <p className="monserrat-a my-color mb-5 text-5xl font-extrabold capitalize sm:text-6xl md:text-6xl lg:text-8xl">
-            {id.replace("-", " ")}
-          </p>
-          <p className="not-white fw-300 text-lg">
-            The beuty around place where I live
-          </p>
-        </div>
-      </section>
+      <HeroSection title={name} description={text} />
       <div className="mb-24 p-10 md:p-24">
         <Masonry
           breakpointCols={breakpointColumnsObj}
