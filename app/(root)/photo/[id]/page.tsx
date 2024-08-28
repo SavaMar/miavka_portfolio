@@ -69,6 +69,23 @@ export default function GalleryPage({ params }: { params: { id: string } }) {
                       height={300}
                       className="h-auto w-full rounded-lg object-cover hover:opacity-45"
                     />
+                    {/* Watermark */}
+                    <div className="absolute bottom-2 right-2">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="size-8 opacity-50"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 4v16m8-8H4"
+                        />
+                      </svg>
+                    </div>
                   </button>
                 </DialogTrigger>
                 {selectedImage && (

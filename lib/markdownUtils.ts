@@ -6,17 +6,28 @@ import html from "remark-html";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
-// Define a type for the front matter data
 interface ArticleSummaryData {
   id: string;
   title: string;
-  date: string;
+  date: string; // Store date as string
   coverImage: string;
   tags: string[];
 }
 
 interface ArticleData extends ArticleSummaryData {
   contentHtml: string;
+}
+
+function parseDate(dateStr: string): Date {
+  const parts = dateStr.split(".");
+  // Check that we have the day, month, and year parts
+  if (parts.length === 3) {
+    const day = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1; // Adjust for zero-based month index
+    const year = parseInt(parts[2], 10);
+    return new Date(year, month, day);
+  }
+  throw new Error("Invalid date format");
 }
 
 export function getSortedArticlesData(): ArticleSummaryData[] {
@@ -39,16 +50,25 @@ export function getSortedArticlesData(): ArticleSummaryData[] {
     return {
       id,
       title,
-      date,
+      date, // Use the date string directly here
       coverImage,
-      tags, // Include tags in the returned data
+      tags,
     };
   });
 
-  return allArticlesData.sort((a, b) => (a.date < b.date ? 1 : -1));
+  // If you need to sort by date, you will need to convert dates into a comparable format here
+  return allArticlesData.sort((a, b) => {
+    try {
+      const dateA = parseDate(a.date);
+      const dateB = parseDate(b.date);
+      return dateB.getTime() - dateA.getTime(); // Use getTime() for comparison
+    } catch (error) {
+      console.error("Error parsing dates:", error);
+      return 0; // Default to a neutral value in case of error
+    }
+  });
 }
 
-// Function to get data for a specific post
 export async function getPostData(id: string): Promise<ArticleData> {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -70,9 +90,9 @@ export async function getPostData(id: string): Promise<ArticleData> {
   return {
     id,
     title,
-    date,
+    date, // Directly use the date string as received from the markdown file
     coverImage,
-    tags, // Include tags in the returned data
+    tags,
     contentHtml,
   };
 }
