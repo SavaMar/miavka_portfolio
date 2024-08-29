@@ -30,6 +30,11 @@ interface GalleryPageProps {
 
 export default function GalleryPage({ params }: GalleryPageProps) {
   const { id } = params;
+
+  // Hooks must be at the top level
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+
   const collection = collections.find((col) => col.id === id);
 
   // Handle the case where the collection is not found
@@ -44,9 +49,6 @@ export default function GalleryPage({ params }: GalleryPageProps) {
     (_, index) =>
       `https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/photos/${id}/${index + 1}.jpg`
   );
-
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <section>
