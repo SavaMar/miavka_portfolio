@@ -19,7 +19,7 @@ const page = () => {
           </p>
           <SocialLinks className="" />
           <p className="not-white fw-300 text-lg">
-            This part in development and will be ready soon :) 🌼
+            Ukrainian artist based in Switzerland 🌼
           </p>
         </div>
       </div>

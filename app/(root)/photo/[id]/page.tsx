@@ -5,14 +5,21 @@ import { useState } from "react";
 import Masonry from "react-masonry-css";
 import HeroSection from "@/components/shared/HeroSection";
 import collections from "@/types/collections";
+import Link from "next/link";
 
 // Define the mapping of collection IDs to their respective number of images
 const collectionImageCounts: Record<string, number> = {
-  buren: 9,
-  "self-portrait": 20,
-  "cokin-filters": 15,
-  "my-vision": 30,
+  "little-swiss-riot": 12,
+  buren: 36,
+  "self-portrait": 15,
+  "cokin-filters": 10,
+  "my-vision": 16,
   "all-around": 18,
+  "art-space": 17,
+  "biel-art-shop": 18,
+  "black-and-white": 16,
+  clouds: 13,
+  "ghost-in-buren": 27,
 };
 
 const breakpointColumnsObj = {
@@ -34,6 +41,7 @@ export default function GalleryPage({ params }: GalleryPageProps) {
   // Hooks must be at the top level
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const collection = collections.find((col) => col.id === id);
 
@@ -42,18 +50,24 @@ export default function GalleryPage({ params }: GalleryPageProps) {
     return <p>No such collection found.</p>;
   }
 
-  const { name, text } = collection;
+  const { name, text, button, buttonLink } = collection;
   const imageCount = collectionImageCounts[id] || 0;
   const imageUrls = Array.from(
     { length: imageCount },
     (_, index) =>
-      `https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/photos/${id}/${index + 1}.jpg`
+      `https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/photos/${id}/${(index + 1).toString().padStart(2, "0")}.jpg`
   );
 
   return (
     <section>
       <HeroSection title={name} description={text} />
       <div className="mb-24 p-10 md:p-24">
+        <Link
+          href="/photo"
+          className="mb-5 ml-5 pb-10 text-my-color underline hover:text-my-color-dark"
+        >
+          ← BACK TO PHOTOS
+        </Link>
         <Masonry
           breakpointCols={breakpointColumnsObj}
           className="hero-bg flex gap-4 rounded-lg p-10"
@@ -72,28 +86,13 @@ export default function GalleryPage({ params }: GalleryPageProps) {
                     <Image
                       src={url}
                       alt={`Image ${index + 1}`}
-                      layout="responsive"
+                      // layout="responsive"
                       width={500}
                       height={300}
-                      className="h-auto w-full rounded-lg object-cover hover:opacity-45"
+                      onLoad={() => setIsLoaded(true)}
+                      loading="lazy"
+                      className={`h-auto w-full rounded-lg object-cover hover:opacity-45 ${isLoaded ? "image-loaded" : "image-blur"}`}
                     />
-                    {/* Watermark */}
-                    <div className="absolute bottom-2 right-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="size-8 opacity-50"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M12 4v16m8-8H4"
-                        />
-                      </svg>
-                    </div>
                   </button>
                 </DialogTrigger>
                 {selectedImage && (
@@ -116,6 +115,17 @@ export default function GalleryPage({ params }: GalleryPageProps) {
             </div>
           ))}
         </Masonry>
+        {button && (
+          <div className="mt-4 w-full">
+            <a
+              href={buttonLink}
+              target="_blank"
+              className="flex w-full justify-center rounded bg-my-color p-4 text-white hover:bg-my-color-dark"
+            >
+              <p>ALL PHOTOS</p>
+            </a>
+          </div>
+        )}
       </div>
     </section>
   );

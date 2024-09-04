@@ -55,4 +55,13 @@
   .fw-300 {
     font-weight: 300;
   }
+  .image-blur {
+    filter: blur(8px);
+    transition: filter 0.3s ease-out;
+  }
+
+  /* CSS when the image is loaded */
+  .image-loaded {
+    filter: none;
+  }
 }
