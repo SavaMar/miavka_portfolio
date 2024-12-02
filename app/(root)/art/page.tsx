@@ -5,7 +5,7 @@ const page = () => {
     <section>
       <section className="hero-bg flex w-full flex-col px-20 pr-10 sm:flex-row sm:items-center lg:h-60">
         <div className="sm:ml-5 xl:ml-10">
-          <p className="monserrat-a my-color mb-5 text-5xl font-extrabold sm:text-6xl md:text-6xl lg:text-8xl">
+          <p className="mb-5 font-namu text-5xl font-extrabold text-my-color sm:text-6xl md:text-6xl lg:text-8xl">
             Art
           </p>
           <p className="not-white fw-300 text-lg">In development</p>

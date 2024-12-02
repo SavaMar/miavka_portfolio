@@ -13,7 +13,7 @@ export default async function BlogPage() {
     <section>
       <section className="hero-bg flex w-full flex-col px-20 pr-10 sm:flex-row sm:items-center lg:h-60">
         <div className="sm:ml-5 xl:ml-10">
-          <p className="monserrat-a my-color my-5 text-5xl font-extrabold sm:text-6xl md:text-6xl lg:text-8xl">
+          <p className="my-5 font-namu text-5xl font-extrabold text-my-color sm:text-6xl md:text-6xl lg:text-8xl">
             Blog
           </p>
           <p className="not-white fw-300 text-lg">
@@ -39,7 +39,7 @@ export default async function BlogPage() {
                 className="mb-4 h-40 w-full rounded-lg object-cover sm:mb-0 sm:mr-6 sm:w-1/3"
               />
               <div className="flex flex-col">
-                <h2 className="mb-2 text-2xl font-semibold text-my-color">
+                <h2 className="mb-2 text-2xl font-semibold text-my-color-light">
                   {title}
                 </h2>
                 <p className="mb-4 text-sm text-slate-300">{date}</p>
@@ -48,7 +48,7 @@ export default async function BlogPage() {
                     <Badge
                       variant="secondary"
                       key={tag}
-                      className="mr-1 rounded-md bg-my-color"
+                      className="mr-1 rounded-md bg-my-color-light"
                     >
                       #{tag}
                     </Badge>

@@ -10,9 +10,8 @@ const page = () => {
             Done with love
           </p>
           <p className="not-white fw-300 text-lg">
-            Absolutely, here's a simpler version: "Every piece I make has its
-            own story and a special name. I create all my work with love, fun,
-            and passion."
+            Every piece I make has its own story and a special name. I create
+            all my work with love, fun, and passion.
           </p>
         </div>
       </section>
