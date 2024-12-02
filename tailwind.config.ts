@@ -18,8 +18,13 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        typewriter: ["Sp_Typewriter", "monospace"],
+        namu: ["NAMU1960", "sans-serif"],
+      },
       colors: {
-        "my-color": "#e95a4f",
+        "my-color": "#E41B00",
+        "my-color-light": "#e95a4f",
         "my-color-dark": "#c0493f", // a darker shade of my-color
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

@@ -13,9 +13,6 @@
     background-size: cover;
     background-repeat: no-repeat;
   }
-  .my-color {
-    color: #e95a4f;
-  }
   .bg-my-color {
     background-color: #e95a4f;
   }
@@ -63,5 +60,19 @@
   /* CSS when the image is loaded */
   .image-loaded {
     filter: none;
+  }
+
+  @font-face {
+    font-family: "Sp_Typewriter";
+    src: url("../public/fonts/Sp_Typewriter.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "NAMU1960";
+    src: url("../public/fonts/NAMU-1960.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
   }
 }

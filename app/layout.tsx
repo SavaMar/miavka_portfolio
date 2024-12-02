@@ -30,7 +30,7 @@ const shortStack = Short_Stack({
 export const metadata: Metadata = {
   title: "Miavka portfolio",
   description:
-    "Creative prtofolio of Miavka. Photography. Illustration. Tattoo. Design. Art.",
+    "Creative swiss photographer, illustrator, designer. From Switzerland.",
 };
 
 export default function RootLayout({
