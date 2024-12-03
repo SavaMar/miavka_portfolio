@@ -34,13 +34,6 @@ const collections: Collection[] = [
       "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/photos/collection/ghost-in-buren.jpg",
   },
   {
-    name: "Self Portrait",
-    id: "self-portrait",
-    text: "Self-portraits capturing personal and artistic growth.",
-    photo:
-      "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/photos/collection/self-portrait.jpg",
-  },
-  {
     name: "Cokin Filters",
     id: "cokin-filters",
     text: "Using Cokin filters to enhance photographic effects.",

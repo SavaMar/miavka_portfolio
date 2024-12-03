@@ -4,7 +4,15 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import {
+  Menu,
+  Store,
+  Images,
+  Notebook,
+  Mail,
+  Palette,
+  Puzzle,
+} from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -41,25 +49,32 @@ const Navbar = () => {
               <Menu size={30} color="#e95a4f" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56">
+          <DropdownMenuContent className="w-48">
             <DropdownMenuGroup>
               <DropdownMenuItem>
+                <Images color="#e95a4f" />
                 <Link href="/photo">Collections</Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
+                <Palette color="#e95a4f" />
                 <Link href="/art">Art</Link>
               </DropdownMenuItem>
+              <DropdownMenuSeparator />
               <DropdownMenuItem>
+                <Store color="#e95a4f" />
                 <Link href="/shop">STORE</Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
+                <Notebook color="#e95a4f" />
                 <Link href="/blog">Blog</Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
+                <Mail color="#e95a4f" />
                 <Link href="/contact">Contact</Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
+                <Puzzle color="#e95a4f" />
                 <Link href="/about">About</Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
@@ -81,7 +96,7 @@ const Navbar = () => {
           </Link>
           <Link
             href="/shop"
-            className="block grow px-4 uppercase hover:text-slate-300 sm:hidden lg:flex"
+            className="block grow px-4 uppercase text-my-color hover:text-slate-300 sm:hidden lg:flex"
           >
             Store
           </Link>

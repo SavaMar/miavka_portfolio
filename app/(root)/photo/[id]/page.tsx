@@ -11,7 +11,6 @@ import Link from "next/link";
 const collectionImageCounts: Record<string, number> = {
   "little-swiss-riot": 12,
   buren: 36,
-  "self-portrait": 15,
   "cokin-filters": 10,
   "my-vision": 16,
   "all-around": 18,

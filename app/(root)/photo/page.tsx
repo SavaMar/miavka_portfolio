@@ -10,7 +10,7 @@ const page = () => {
   return (
     <section>
       <HeroSection
-        title="Photo"
+        title="PHOTO"
         description="Here are my photography projects, each with its own unique emotion and perspective. For me, photography isn't just about capturing a moment; it's about opening a doorway to creativity, inspiration, and feelings."
       />
       <div className="mb-24 md:pb-24">

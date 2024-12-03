@@ -94,7 +94,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ className }) => {
       </a>
 
       {/* patreon x */}
-      <a href="https://x.com/MariMiavka" className="ml-2 cursor-pointer">
+      {/* <a href="https://x.com/MariMiavka" className="ml-2 cursor-pointer">
         <svg
           width="32"
           height="32"
@@ -109,7 +109,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ className }) => {
             fill="#252424"
           />
         </svg>
-      </a>
+      </a> */}
 
       {/* telegram */}
       <a href="https://t.me/mari_sava" className="ml-2 cursor-pointer">

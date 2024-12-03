@@ -57,7 +57,10 @@ const ContactForm: React.FC = () => {
 
       {/* Name Field */}
       <div>
-        <label htmlFor="name" className="my-color block text-sm font-medium">
+        <label
+          htmlFor="name"
+          className="block text-sm font-medium text-my-color-light"
+        >
           Name
         </label>
         <Input
@@ -73,7 +76,10 @@ const ContactForm: React.FC = () => {
 
       {/* Email Field */}
       <div>
-        <label htmlFor="email" className="my-color block text-sm font-medium">
+        <label
+          htmlFor="email"
+          className="block text-sm font-medium text-my-color-light"
+        >
           Email
         </label>
         <Input
@@ -95,7 +101,10 @@ const ContactForm: React.FC = () => {
 
       {/* Message Field */}
       <div>
-        <label htmlFor="message" className="my-color block text-sm font-medium">
+        <label
+          htmlFor="message"
+          className="block text-sm font-medium text-my-color-light"
+        >
           Message
         </label>
         <Textarea
@@ -113,7 +122,9 @@ const ContactForm: React.FC = () => {
         type="submit"
         disabled={isSubmitting}
         className={`w-full rounded-md px-4 py-2 text-white ${
-          isSubmitting ? "bg-gray-500" : "bg-my-color hover:bg-my-color-dark"
+          isSubmitting
+            ? "bg-gray-500"
+            : "bg-my-color-light hover:bg-my-color-dark"
         } focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}
       >
         {isSubmitting ? "Sending..." : "Send Message"}
