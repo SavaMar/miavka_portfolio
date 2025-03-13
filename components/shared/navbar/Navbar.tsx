@@ -46,7 +46,7 @@ const Navbar = () => {
             height={34}
             alt="Miavka logo"
           />
-          <p className="hidden pl-3 text-xl text-my-color-light lg:block">
+          <p className="hidden pl-3 text-base text-my-color-light md:text-lg lg:block lg:text-xl">
             Mari Miavka
           </p>
         </Link>

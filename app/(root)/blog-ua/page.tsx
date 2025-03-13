@@ -15,7 +15,7 @@ interface Article {
   tags: string[];
 }
 
-export default function BlogPage() {
+export default function BlogUaPage() {
   const [allArticlesData, setAllArticlesData] = useState<Article[]>([]);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [allTags, setAllTags] = useState<string[]>([]);
@@ -24,7 +24,7 @@ export default function BlogPage() {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await fetch("/api/articles");
+        const response = await fetch("/api/articles-ua");
         const articles = await response.json();
         setAllArticlesData(articles);
 
@@ -58,7 +58,7 @@ export default function BlogPage() {
   if (isLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        <div className="text-my-color-light">Loading articles...</div>
+        <div className="text-my-color-light">Завантаження статей...</div>
       </div>
     );
   }
@@ -66,14 +66,14 @@ export default function BlogPage() {
   return (
     <section>
       <HeroSection
-        title="BLOG"
-        description="I'm sharing my way here and tips for finding your own style and how to work with your inner creativity. My mission is to inspire others' spirits."
+        title="БЛОГ"
+        description="Тут я ділюся своїм досвідом та порадами щодо пошуку власного стилю та роботи з внутрішньою креативністю. Моя місія - надихати інших."
       />
 
       {/* Tag Filter Section */}
       <div className="px-10 pt-6">
         <h3 className="mb-4 text-lg font-semibold text-my-color-light">
-          Filter by tags:
+          Фільтрувати за тегами:
         </h3>
         <div className="mb-6 flex flex-wrap gap-2">
           {allTags.map((tag) => (
@@ -97,12 +97,12 @@ export default function BlogPage() {
         <div className="hero-bg w-full rounded-lg md:p-10">
           {filteredArticles.length === 0 ? (
             <p className="py-8 text-center text-my-color-light">
-              No articles found with selected tags.
+              Не знайдено статей з вибраними тегами.
             </p>
           ) : (
             filteredArticles.map(({ id, title, date, coverImage, tags }) => (
               <Link
-                href={`/blog/${id}`}
+                href={`/blog-ua/${id}`}
                 key={id}
                 className="mb-8 flex cursor-pointer flex-col items-center transition duration-300 ease-in-out hover:scale-105 hover:ease-in-out sm:flex-row"
               >

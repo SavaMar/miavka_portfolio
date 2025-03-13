@@ -62,7 +62,7 @@ export default function GalleryPage({ params }: GalleryPageProps) {
       <HeroSection title={name} description={text} />
       <div className="mb-24 p-10 md:p-24">
         <Link
-          href="/photo"
+          href="/photos"
           className="mb-5 ml-5 pb-10 text-my-color underline hover:text-my-color-dark"
         >
           ← BACK TO PHOTOS

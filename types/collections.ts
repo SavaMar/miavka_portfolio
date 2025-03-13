@@ -12,7 +12,7 @@ const collections: Collection[] = [
   {
     name: "Little Swiss Riot",
     id: "little-swiss-riot",
-    text: "It have 500 photos, so it will take time to load all of them.",
+    text: "Music and dancing rokabilly party in the Gasthof Zum Bad 2024",
     photo:
       "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/photos/collection/little-swiss-riot.jpg",
     button: true,
@@ -74,13 +74,6 @@ const collections: Collection[] = [
     text: "The world of black and white feelings",
     photo:
       "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/photos/collection/black-and-white.jpg",
-  },
-  {
-    name: "Clouds",
-    id: "clouds",
-    text: "The world of gorgeos clouds",
-    photo:
-      "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/photos/collection/clouds.jpg",
   },
 ];
 
