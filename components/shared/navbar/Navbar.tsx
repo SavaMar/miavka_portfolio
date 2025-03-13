@@ -22,6 +22,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+const navigationItems = [
+  { href: "/photos", label: "Photos", icon: Images },
+  { href: "/collages", label: "Collages", icon: Images },
+  { href: "/art", label: "Art", icon: Palette },
+  { href: "/shop", label: "Store", icon: Store, separator: true },
+  { href: "/blog", label: "Blog", icon: Notebook },
+  { href: "/about", label: "About me", icon: Puzzle },
+  { href: "/contact", label: "Contact", icon: Mail },
+];
+
 const Navbar = () => {
   return (
     <nav className="flex flex-wrap items-center justify-between p-6 font-namu font-bold">
@@ -51,73 +61,33 @@ const Navbar = () => {
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-48">
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <Images color="#e95a4f" />
-                <Link href="/photo">Collections</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Palette color="#e95a4f" />
-                <Link href="/art">Art</Link>
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <Store color="#e95a4f" />
-                <Link href="/shop">STORE</Link>
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <Notebook color="#e95a4f" />
-                <Link href="/blog">Blog</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Mail color="#e95a4f" />
-                <Link href="/contact">Contact</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Puzzle color="#e95a4f" />
-                <Link href="/about">About</Link>
-              </DropdownMenuItem>
+              {navigationItems.map((item, index) => (
+                <React.Fragment key={item.href}>
+                  <DropdownMenuItem>
+                    <item.icon color="#e95a4f" />
+                    <Link href={item.href}>{item.label}</Link>
+                  </DropdownMenuItem>
+                  {item.separator && <DropdownMenuSeparator />}
+                </React.Fragment>
+              ))}
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
 
         <div className="hidden text-my-color-light md:flex-col lg:flex lg:flex-row lg:items-center">
-          <Link
-            href="/photo"
-            className="block grow px-4 uppercase hover:text-slate-300 sm:hidden lg:flex"
-          >
-            Projects
-          </Link>
-          <Link
-            href="/art"
-            className="block grow px-4 uppercase hover:text-slate-300 sm:hidden lg:flex"
-          >
-            Art
-          </Link>
-          <Link
-            href="/shop"
-            className="block grow px-4 uppercase text-my-color hover:text-slate-300 sm:hidden lg:flex"
-          >
-            Store
-          </Link>
-          <Link
-            href="/blog"
-            className="block grow px-4 uppercase hover:text-slate-300 sm:hidden lg:flex"
-          >
-            Blog
-          </Link>
-          <Link
-            href="/about"
-            className="block grow px-4 uppercase hover:text-slate-300 sm:hidden lg:flex"
-          >
-            About me
-          </Link>
-          <Link
-            href="/contact"
-            className="block grow pl-4 hover:text-slate-300 lg:flex"
-          >
-            CONTACT
-          </Link>
+          {navigationItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`block grow ${
+                item.href === "/contact" ? "pl-4" : "px-4"
+              } uppercase hover:text-slate-300 sm:hidden lg:flex ${
+                item.href === "/shop" ? "text-my-color" : ""
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
       </div>
     </nav>
