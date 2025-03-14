@@ -24,6 +24,7 @@ import {
 
 const navigationItems = [
   { href: "/photos", label: "Photos", icon: Images },
+  { href: "/projects", label: "Projects", icon: Images },
   { href: "/collages", label: "Collages", icon: Images },
   { href: "/art", label: "Art", icon: Palette },
   { href: "/shop", label: "Store", icon: Store, separator: true },

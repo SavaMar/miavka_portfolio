@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Masonry from "react-masonry-css";
+import HeroSection from "@/components/shared/HeroSection";
 
 const breakpointColumnsObj = {
   default: 5,
@@ -22,19 +23,10 @@ const Collages = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   return (
     <>
-      <section className="hero-bg mb-10 flex h-64 w-full flex-wrap justify-between px-20 pr-10 pt-5">
-        <div className="relative flex">
-          <div className=" -left-6 sm:left-0 sm:ml-7 md:relative md:mt-2 lg:mt-10 xl:ml-5">
-            <p className="mb-5 font-namu text-4xl font-extrabold text-my-color sm:text-6xl md:text-6xl lg:text-6xl">
-              Collages
-            </p>
-            <p className="not-white fw-300 mt-10 font-namu text-lg">
-              My digital collages made for music covers, magazines and and
-              advertising
-            </p>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        title="COLLAGES"
+        description="My digital collages made for music covers, magazines and and advertising"
+      />
       <div className=" mb-24 bg-neutral-100  p-5">
         <Masonry
           breakpointCols={breakpointColumnsObj}
