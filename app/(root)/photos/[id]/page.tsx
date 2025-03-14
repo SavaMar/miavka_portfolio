@@ -9,16 +9,10 @@ import Link from "next/link";
 
 // Define the mapping of collection IDs to their respective number of images
 const collectionImageCounts: Record<string, number> = {
+  "fight-night-fsa": 15,
   "little-swiss-riot": 12,
   buren: 36,
-  "cokin-filters": 10,
-  "my-vision": 16,
-  "all-around": 18,
-  "art-space": 17,
-  "biel-art-shop": 18,
-  "black-and-white": 16,
-  clouds: 13,
-  "ghost-in-buren": 27,
+  "with-story": 27,
 };
 
 const breakpointColumnsObj = {
