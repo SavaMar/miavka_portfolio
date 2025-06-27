@@ -1,0 +1,46 @@
+{
+  "navigation": {
+    "photos": "Photos",
+    "projects": "Projects",
+    "collages": "Collages",
+    "art": "Art",
+    "blog": "Blog",
+    "books": "Books",
+    "about": "About me",
+    "contact": "Contact"
+  },
+  "language": {
+    "en": "English",
+    "ua": "Ukrainian",
+    "de": "German"
+  },
+  "home": {
+    "hero": {
+      "title": "MARI MIAVKA",
+      "subtitle": "Rebel. Authenticity."
+    },
+    "nowPage": {
+      "title": "What I'm Up To",
+      "lastUpdated": "Last updated: 11.06.2025",
+      "sectionTitle": "What is a Now Page?",
+      "description": "A Now page is a simple concept created by <derekSivers>Derek Sivers</derekSivers> that offers a fun and engaging way to share what I'm up to right now.",
+      "derekSiversLink": "Derek Sivers",
+      "activities": {
+        "reading": {
+          "title": "Reading",
+          "content": "\"The Creative Act\" by Rick Rubin. <viewAllBooks>View all books I've read →</viewAllBooks>",
+          "viewAllBooks": "View all books I've read →"
+        },
+        "listening": {
+          "title": "Listening",
+          "content": "\"Proficorn\" Rajesh Jain on Audible"
+        },
+        "life": {
+          "title": "Life",
+          "content": "Working on three projects at the moment, writing code. One for Ukrainians in Switzerland, one related to JiuJitsu industry in Switzerland, and the third one is this blog"
+        }
+      },
+      "ctaButton": "Explore My Now Page"
+    }
+  }
+}

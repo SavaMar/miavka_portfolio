@@ -4,41 +4,38 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import {
-  Menu,
-  Store,
-  Images,
-  Notebook,
-  Mail,
-  Palette,
-  Puzzle,
-} from "lucide-react";
+import { Menu, Notebook, Mail, Palette, Puzzle, Book } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useLocale, useTranslations } from "next-intl";
 
 const navigationItems = [
-  { href: "/photos", label: "Photos", icon: Images },
-  { href: "/projects", label: "Projects", icon: Images },
-  { href: "/collages", label: "Collages", icon: Images },
-  { href: "/art", label: "Art", icon: Palette },
-  { href: "/shop", label: "Store", icon: Store, separator: true },
-  { href: "/blog", label: "Blog", icon: Notebook },
-  { href: "/about", label: "About me", icon: Puzzle },
-  { href: "/contact", label: "Contact", icon: Mail },
+  { href: "/art", label: "art", icon: Palette },
+  { href: "/blog", label: "blog", icon: Notebook },
+  { href: "/books", label: "books", icon: Book },
+  { href: "/about", label: "about", icon: Puzzle },
+  { href: "/contact", label: "contact", icon: Mail },
+];
+
+const languages = [
+  { code: "en", name: "English", flag: "🇺🇸" },
+  { code: "ua", name: "Українська", flag: "🇺🇦" },
 ];
 
 const Navbar = () => {
+  const locale = useLocale();
+  const t = useTranslations("navigation");
+
   return (
     <nav className="flex flex-wrap items-center justify-between p-6 font-namu font-bold">
       <div className="mr-auto flex flex-col pl-0 lg:flex-row">
         <Link
-          href="/"
+          href={`/${locale}`}
           className="block w-full grow transition ease-in-out hover:text-slate-300 lg:flex lg:w-auto lg:items-center"
         >
           <Image
@@ -66,9 +63,8 @@ const Navbar = () => {
                 <React.Fragment key={item.href}>
                   <DropdownMenuItem>
                     <item.icon color="#e95a4f" />
-                    <Link href={item.href}>{item.label}</Link>
+                    <Link href={`/${locale}${item.href}`}>{t(item.label)}</Link>
                   </DropdownMenuItem>
-                  {item.separator && <DropdownMenuSeparator />}
                 </React.Fragment>
               ))}
             </DropdownMenuGroup>
@@ -79,14 +75,32 @@ const Navbar = () => {
           {navigationItems.map((item) => (
             <Link
               key={item.href}
-              href={item.href}
+              href={`/${locale}${item.href}`}
               className={`block grow ${
                 item.href === "/contact" ? "pl-4" : "px-4"
               } uppercase hover:text-slate-300 sm:hidden lg:flex ${
                 item.href === "/shop" ? "text-my-color" : ""
               }`}
             >
-              {item.label}
+              {t(item.label)}
+            </Link>
+          ))}
+        </div>
+
+        {/* Language Switcher */}
+        <div className="ml-4 flex space-x-1 rounded-md border border-my-color-dark bg-my-color-light p-0.5">
+          {languages.map((lang) => (
+            <Link
+              key={lang.code}
+              href={`/${lang.code}`}
+              className={`rounded-md px-2 py-1 text-xs font-medium transition-colors ${
+                locale === lang.code
+                  ? "bg-gray-900 text-white"
+                  : "font-bold text-white hover:bg-gray-200 hover:text-black"
+              }`}
+              aria-label={`Switch language to ${lang.name}`}
+            >
+              {lang.code.toUpperCase()}
             </Link>
           ))}
         </div>
