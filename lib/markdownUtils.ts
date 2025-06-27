@@ -9,9 +9,10 @@ const postsDirectory = path.join(process.cwd(), "posts");
 interface ArticleSummaryData {
   id: string;
   title: string;
-  date: string; // Store date as string
+  date: string;
   coverImage: string;
   tags: string[];
+  excerpt?: string;
 }
 
 interface ArticleData extends ArticleSummaryData {
@@ -20,10 +21,9 @@ interface ArticleData extends ArticleSummaryData {
 
 function parseDate(dateStr: string): Date {
   const parts = dateStr.split(".");
-  // Check that we have the day, month, and year parts
   if (parts.length === 3) {
     const day = parseInt(parts[0], 10);
-    const month = parseInt(parts[1], 10) - 1; // Adjust for zero-based month index
+    const month = parseInt(parts[1], 10) - 1;
     const year = parseInt(parts[2], 10);
     return new Date(year, month, day);
   }
@@ -40,31 +40,41 @@ export function getSortedArticlesData(): ArticleSummaryData[] {
 
     const matterResult = matter(fileContents);
 
-    const { title, date, coverImage, tags } = matterResult.data as {
+    const { title, date, coverImage, tags, excerpt } = matterResult.data as {
       title: string;
       date: string;
       coverImage: string;
       tags: string[];
+      excerpt?: string;
     };
+
+    // Generate excerpt from content if not provided
+    const contentExcerpt =
+      excerpt ||
+      matterResult.content
+        .replace(/[#*`]/g, "") // Remove markdown formatting
+        .replace(/\n+/g, " ") // Replace newlines with spaces
+        .trim()
+        .substring(0, 150) + "...";
 
     return {
       id,
       title,
-      date, // Use the date string directly here
+      date,
       coverImage,
       tags,
+      excerpt: contentExcerpt,
     };
   });
 
-  // If you need to sort by date, you will need to convert dates into a comparable format here
   return allArticlesData.sort((a, b) => {
     try {
       const dateA = parseDate(a.date);
       const dateB = parseDate(b.date);
-      return dateB.getTime() - dateA.getTime(); // Use getTime() for comparison
+      return dateB.getTime() - dateA.getTime();
     } catch (error) {
       console.error("Error parsing dates:", error);
-      return 0; // Default to a neutral value in case of error
+      return 0;
     }
   });
 }
@@ -80,19 +90,21 @@ export async function getPostData(id: string): Promise<ArticleData> {
     .process(matterResult.content);
   const contentHtml = processedContent.toString();
 
-  const { title, date, coverImage, tags } = matterResult.data as {
+  const { title, date, coverImage, tags, excerpt } = matterResult.data as {
     title: string;
     date: string;
     coverImage: string;
     tags: string[];
+    excerpt?: string;
   };
 
   return {
     id,
     title,
-    date, // Directly use the date string as received from the markdown file
+    date,
     coverImage,
     tags,
+    excerpt,
     contentHtml,
   };
 }

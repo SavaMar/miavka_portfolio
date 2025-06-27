@@ -11,8 +11,28 @@
   },
   "language": {
     "en": "English",
-    "ua": "Ukrainian",
-    "de": "German"
+    "ua": "Ukrainian"
+  },
+  "books": {
+    "title": "My Books",
+    "subtitle": "A collection of books I've read that have changed my life",
+    "backToHome": "Back to Home",
+    "search": "Search...",
+    "score": "Score",
+    "allScores": "All scores",
+    "tags": "Tags",
+    "allTags": "All tags",
+    "author": "Author",
+    "allAuthors": "All authors",
+    "clear": "Clear",
+    "noBooksFound": "No books found. Try adjusting your filters.",
+    "authorLabel": "Author:",
+    "description": "Description:",
+    "tagsLabel": "Tags:",
+    "translations": "Translations:",
+    "quotes": "Quotes:",
+    "stars": "stars",
+    "lifechanging": "Lifechanging"
   },
   "home": {
     "hero": {
@@ -41,6 +61,60 @@
         }
       },
       "ctaButton": "Explore My Now Page"
+    }
+  },
+  "nowPage": {
+    "title": "What I'm Up To",
+    "lastUpdated": "Last updated: 26.06.2025",
+    "sectionTitle": "What is a Now Page?",
+    "description": "A Now page is a simple concept created by <derekSivers>Derek Sivers</derekSivers> that offers a fun and engaging way to share what I'm up to right now.",
+    "derekSiversLink": "Derek Sivers",
+    "activities": {
+      "reading": {
+        "title": "Reading",
+        "content": "\"The Creative Act\" by Rick Rubin. <viewAllBooks>View all books I've read →</viewAllBooks>",
+        "viewAllBooks": "View all books I've read →"
+      },
+      "listening": {
+        "title": "Listening",
+        "content": "\"Proficorn\" Rajesh Jain on Audible"
+      },
+      "life": {
+        "title": "Life",
+        "content": "Working on three projects at the moment, writing code. One for Ukrainians in Switzerland, one related to JiuJitsu industry in Switzerland, and the third one is this blog"
+      }
+    },
+    "backButton": "Back to Home",
+    "readingList": {
+      "title": "Current Reading List:",
+      "book1": "\"The Creative Act\" by Rick Rubin",
+      "book2": "\"Atomic Habits\" by James Clear",
+      "book3": "\"Deep Work\" by Cal Newport"
+    },
+    "podcasts": {
+      "title": "Current Podcasts & Audiobooks:",
+      "podcast1": "\"Proficorn\" by Rajesh Jain",
+      "podcast2": "\"The Tim Ferriss Show\"",
+      "podcast3": "\"How I Built This\" with Guy Raz"
+    },
+    "projects": {
+      "title": "Current Projects:",
+      "project1": {
+        "name": "Ukrainian Community Platform",
+        "description": "Building a platform for Ukrainians in Switzerland"
+      },
+      "project2": {
+        "name": "JiuJitsu Industry App",
+        "description": "Developing solutions for the JiuJitsu community in Switzerland"
+      },
+      "project3": {
+        "name": "Personal Blog",
+        "description": "This website and content creation"
+      }
+    },
+    "footer": {
+      "text": "This page is inspired by the",
+      "link": "Now Page movement"
     }
   }
 }
