@@ -163,7 +163,7 @@ const Home = () => {
                 <div className="mt-6 border-t border-gray-100 pt-4 sm:mt-8 sm:pt-6">
                   <Link
                     href="/now"
-                    className="group inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-[#e95a4f] to-[#ff7a6f] px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:rounded-2xl sm:px-8 sm:py-4 sm:text-base"
+                    className="group inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-[#e95a4f] to-[#ff7a6f] px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-my-color-dark hover:shadow-xl sm:rounded-2xl sm:px-8 sm:py-4 sm:text-base"
                   >
                     <span>{t("nowPage.ctaButton")}</span>
                     <svg
@@ -202,6 +202,54 @@ const Home = () => {
             />
           ))}
         </Masonry>
+
+        {/* GIFs Block */}
+        <div className="mt-8 space-y-6 sm:space-y-8">
+          {/* Single GIF on mobile, 3 columns on larger screens */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {/* GIF 32 */}
+            <div className="flex justify-center">
+              <div className="overflow-hidden rounded-2xl shadow-lg">
+                <Image
+                  src="https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/home/32.gif"
+                  alt="Fun GIF 1"
+                  width={500}
+                  height={375}
+                  className="h-auto w-full max-w-[350px] sm:max-w-[300px] lg:max-w-[500px]"
+                  priority={false}
+                />
+              </div>
+            </div>
+
+            {/* GIF 33 */}
+            <div className="flex justify-center">
+              <div className="overflow-hidden rounded-2xl shadow-lg">
+                <Image
+                  src="https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/home/33.gif"
+                  alt="Fun GIF 2"
+                  width={500}
+                  height={375}
+                  className="h-auto w-full max-w-[350px] sm:max-w-[300px] lg:max-w-[500px]"
+                  priority={false}
+                />
+              </div>
+            </div>
+
+            {/* GIF 34 */}
+            <div className="flex justify-center sm:col-span-2 lg:col-span-1">
+              <div className="overflow-hidden rounded-2xl shadow-lg">
+                <Image
+                  src="https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/home/34.gif"
+                  alt="Fun GIF 3"
+                  width={500}
+                  height={375}
+                  className="h-auto w-full max-w-[350px] sm:max-w-[300px] lg:max-w-[500px]"
+                  priority={false}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Go Up Button - Mobile Only */}
         <div className="mt-8 flex justify-center md:hidden">

@@ -30,13 +30,11 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={inter.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <main className="pattern-background relative min-h-screen">
+          <div className="pattern-background flex min-h-screen flex-col">
             <Navbar />
-            <section className="flex flex-1 flex-col max-md:pb-14">
-              {children}
-            </section>
+            <main className="flex-1">{children}</main>
             <Footer />
-          </main>
+          </div>
         </NextIntlClientProvider>
       </body>
     </html>

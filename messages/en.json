@@ -117,5 +117,51 @@
       "text": "This page is inspired by the",
       "link": "Now Page movement"
     }
+  },
+  "contact": {
+    "title": "Contact",
+    "welcome": {
+      "title": "Let's Connect!"
+    },
+    "options": {
+      "email": {
+        "title": "Email Me",
+        "description": "I read every email and always respond."
+      },
+      "chat": {
+        "title": "Let's Chat",
+        "description": "I enjoy meaningful conversations and learning from others' experiences. I'm always open for back connection and will read all emails."
+      },
+      "connection": {
+        "title": "Build Connections",
+        "description": "I believe in the power of human connection and am always open to new connections."
+      }
+    },
+    "form": {
+      "title": "Send Me a Message",
+      "subtitle": "I'm interested in your projects and books that have changed your life (not artistic). Or what's hard for you right now. Or just ... :D",
+      "fields": {
+        "name": "Name",
+        "namePlaceholder": "Your name",
+        "email": "Email",
+        "emailPlaceholder": "your.email@example.com",
+        "message": "Message",
+        "messagePlaceholder": "Tell me what's on your mind..."
+      },
+      "validation": {
+        "nameRequired": "Name is required",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email address",
+        "messageRequired": "Message is required"
+      },
+      "button": {
+        "send": "Send Message",
+        "sending": "Sending..."
+      },
+      "success": {
+        "title": "Success!",
+        "message": "Message sent successfully."
+      }
+    }
   }
 }

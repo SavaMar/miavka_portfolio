@@ -24,9 +24,11 @@ import { Badge } from "@/components/ui/badge";
 // Import books based on locale
 const getBooks = (locale: string) => {
   if (locale === "ua") {
-    return require("@/data/books-ua").books;
+    const books = require("@/data/books-ua").books;
+    return books.sort((a: Book, b: Book) => b.id - a.id); // Sort by ID descending
   }
-  return require("@/data/books-en").books;
+  const books = require("@/data/books-en").books;
+  return books.sort((a: Book, b: Book) => b.id - a.id); // Sort by ID descending
 };
 
 interface Book {
@@ -52,6 +54,7 @@ const BooksPage = () => {
   const [selectedAuthor, setSelectedAuthor] = useState<string>("all");
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [imageErrors, setImageErrors] = useState<Set<number>>(new Set());
 
   // Get unique values for filters
   const allHashtags = useMemo(() => {
@@ -107,6 +110,10 @@ const BooksPage = () => {
   const handleBookClick = (book: Book) => {
     setSelectedBook(book);
     setIsDialogOpen(true);
+  };
+
+  const handleImageError = (bookId: number) => {
+    setImageErrors((prev) => new Set(prev).add(bookId));
   };
 
   const getScoreDisplay = (score: number | string) => {
@@ -267,29 +274,57 @@ const BooksPage = () => {
               className="group cursor-pointer"
               onClick={() => handleBookClick(book)}
             >
-              <div className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl group-hover:scale-105">
-                <Image
-                  src={book.cover}
-                  alt={`${book.title} by ${book.author} - ${getScoreDisplay(book["my-score"])}`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 16vw, 12vw"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-20" />
-
-                {/* Score overlay */}
-                <div className="absolute right-2 top-2 rounded-full bg-white bg-opacity-90 p-1">
-                  {getScoreDisplay(book["my-score"])}
+              <div className="overflow-hidden rounded-lg bg-white shadow-lg transition-all duration-300 hover:shadow-xl group-hover:scale-105">
+                {/* Book Cover */}
+                <div className="relative aspect-[3/4]">
+                  {book.cover && !imageErrors.has(book.id) ? (
+                    <Image
+                      src={book.cover}
+                      alt={`${book.title} by ${book.author}`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 16vw, 12vw"
+                      onError={() => handleImageError(book.id)}
+                    />
+                  ) : (
+                    <div className="flex size-full items-center justify-center bg-gray-200 p-3">
+                      <div className="text-center">
+                        <h3 className="line-clamp-3 text-xs font-medium leading-tight text-gray-800">
+                          {book.title}
+                        </h3>
+                        <p className="mt-1 text-xs text-gray-600">
+                          {book.author}
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
                 </div>
 
-                {/* Hashtags overlay */}
-                <div className="absolute inset-x-2 bottom-2">
-                  <div className="flex flex-wrap gap-1">
-                    {book.hashtags.slice(0, 2).map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-xs">
+                {/* Score and Hashtags - Integrated into the card */}
+                <div className="space-y-2 p-2">
+                  {/* Score */}
+                  <div className="flex justify-center">
+                    <div className="rounded-full bg-white/90 px-2 py-1 shadow-sm">
+                      {getScoreDisplay(book["my-score"])}
+                    </div>
+                  </div>
+
+                  {/* Hashtags */}
+                  <div className="flex flex-wrap justify-center gap-1">
+                    {book.hashtags.slice(0, 3).map((tag) => (
+                      <span
+                        key={tag}
+                        className="inline-block rounded border border-gray-200 bg-gray-100 px-1.5 py-0.5 text-[10px] font-medium text-gray-600"
+                      >
                         #{tag}
-                      </Badge>
+                      </span>
                     ))}
+                    {book.hashtags.length > 3 && (
+                      <span className="inline-block rounded border border-gray-100 bg-gray-50 px-1.5 py-0.5 text-[10px] font-medium text-gray-500">
+                        +{book.hashtags.length - 3}
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>
