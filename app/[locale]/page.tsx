@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Masonry from "react-masonry-css";
@@ -19,21 +19,13 @@ const breakpointColumnsObj = {
   500: 1,
 };
 
-const imagesCount = 19;
-const baseUrl = "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/home";
-
-// Generate versioned image URLs with cache busting for mixed formats
+// Generate URLs for all images 1-24, including missing ones
 const generateHomeImageUrls = () => {
   const urls: string[] = [];
-  const version = Date.now(); // Cache busting version
 
-  for (let i = 1; i <= imagesCount; i++) {
-    // Try .jpg first, then .png, then .gif if others don't exist
-    const jpgUrl = `${baseUrl}/${i}.jpg?v=${version}`;
-
-    // For now, we'll use .jpg as default, but you can adjust this logic
-    // based on which files actually exist in your storage
-    urls.push(jpgUrl);
+  // Generate URLs for all images 1-24
+  for (let i = 1; i <= 24; i++) {
+    urls.push(`/assets/img/for_home/${i}.jpg`);
   }
 
   return urls;
@@ -41,26 +33,18 @@ const generateHomeImageUrls = () => {
 
 const Home = () => {
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
-  const [visibleImages, setVisibleImages] = useState<number[]>([]);
   const [isMobile, setIsMobile] = useState(false);
-  const [isPageVisible, setIsPageVisible] = useState(true);
 
-  const loadingRef = useRef<HTMLDivElement>(null);
-  const observerRef = useRef<IntersectionObserver | null>(null);
   const t = useTranslations("home");
 
-  // Generate versioned image URLs with cache busting
+  // Generate image URLs once
   const imageUrls = generateHomeImageUrls();
 
-  // Detect screen size and set initial images
+  // Detect screen size only
   useEffect(() => {
     const checkScreenSize = () => {
       const mobile = window.innerWidth < 700;
       setIsMobile(mobile);
-
-      // Set initial images based on screen size
-      const initialCount = mobile ? 2 : 4;
-      setVisibleImages(Array.from({ length: initialCount }, (_, i) => i));
     };
 
     checkScreenSize();
@@ -69,152 +53,16 @@ const Home = () => {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
-  // Page visibility detection
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      setIsPageVisible(!document.hidden);
-    };
-
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-    return () =>
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-  }, []);
-
-  // Progressive loading with intersection observer
-  useEffect(() => {
-    if (observerRef.current) {
-      observerRef.current.disconnect();
-    }
-
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (
-            entry.isIntersecting &&
-            visibleImages.length < imagesCount &&
-            isPageVisible
-          ) {
-            // Load next batch of images based on screen size
-            const batchSize = isMobile ? 2 : 4;
-            const nextBatch: number[] = [];
-            const currentLength = visibleImages.length;
-
-            for (
-              let i = currentLength;
-              i < Math.min(currentLength + batchSize, imagesCount);
-              i++
-            ) {
-              nextBatch.push(i);
-            }
-
-            if (nextBatch.length > 0) {
-              setVisibleImages((prev) => [...prev, ...nextBatch]);
-            }
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "200px" }
-    );
-
-    if (loadingRef.current) {
-      observerRef.current.observe(loadingRef.current);
-    }
-
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-    };
-  }, [visibleImages.length, isMobile, isPageVisible]);
-
-  // Auto-load more images when scrolling near the bottom
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!isPageVisible || visibleImages.length >= imagesCount) return;
-
-      const scrollTop = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-
-      // Load more when user is near the bottom (within 500px)
-      if (scrollTop + windowHeight >= documentHeight - 500) {
-        const batchSize = isMobile ? 2 : 4;
-        const nextBatch: number[] = [];
-        const currentLength = visibleImages.length;
-
-        for (
-          let i = currentLength;
-          i < Math.min(currentLength + batchSize, imagesCount);
-          i++
-        ) {
-          nextBatch.push(i);
-        }
-
-        if (nextBatch.length > 0) {
-          setVisibleImages((prev) => [...prev, ...nextBatch]);
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [visibleImages.length, isMobile, isPageVisible, imagesCount]);
-
-  // Fallback: Load more images after a delay if not all are loaded
-  useEffect(() => {
-    if (visibleImages.length >= imagesCount || !isPageVisible) return;
-
-    const timer = setTimeout(() => {
-      if (visibleImages.length < imagesCount) {
-        const batchSize = isMobile ? 2 : 4;
-        const nextBatch: number[] = [];
-        const currentLength = visibleImages.length;
-
-        for (
-          let i = currentLength;
-          i < Math.min(currentLength + batchSize, imagesCount);
-          i++
-        ) {
-          nextBatch.push(i);
-        }
-
-        if (nextBatch.length > 0) {
-          setVisibleImages((prev) => [...prev, ...nextBatch]);
-        }
-      }
-    }, 2000); // 2 second delay
-
-    return () => clearTimeout(timer);
-  }, [visibleImages.length, isMobile, isPageVisible, imagesCount]);
-
   const handleImageLoad = useCallback((index: number) => {
     setLoadedImages((prev) => new Set(Array.from(prev).concat(index)));
   }, []);
 
   const handleImageError = useCallback((index: number) => {
-    // If .jpg fails, try .png, then .gif
-    const currentUrl = imageUrls[index];
-    if (currentUrl.includes(".jpg")) {
-      const pngUrl = currentUrl.replace(".jpg", ".png");
-      // Update the URL in the array
-      imageUrls[index] = pngUrl;
-      // Force re-render by updating loaded images
-      setLoadedImages((prev) => {
-        const newSet = new Set(prev);
-        newSet.delete(index);
-        return newSet;
-      });
-    } else if (currentUrl.includes(".png")) {
-      const gifUrl = currentUrl.replace(".png", ".gif");
-      // Update the URL in the array
-      imageUrls[index] = gifUrl;
-      // Force re-render by updating loaded images
-      setLoadedImages((prev) => {
-        const newSet = new Set(prev);
-        newSet.delete(index);
-        return newSet;
-      });
-    }
+    // Mark as loaded to remove loading skeleton and prevent retries
+    setLoadedImages((prev) => new Set(Array.from(prev).concat(index)));
+    console.warn(
+      `Failed to load image ${index + 1} - marking as loaded to prevent retries`
+    );
   }, []);
 
   const scrollToTop = () => {
@@ -374,44 +222,57 @@ const Home = () => {
         <div className="my-8 space-y-6 sm:space-y-8">
           {/* Single GIF on mobile, 3 columns on larger screens */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {/* GIF 32 */}
+            {/* GIF 44 */}
             <div className="flex justify-center">
               <div className="overflow-hidden rounded-2xl shadow-lg">
                 <Image
-                  src="https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/home/32.gif"
+                  src="/assets/img/for_home/44.gif"
                   alt="Fun GIF 1"
-                  width={500}
-                  height={375}
-                  className="h-auto w-full max-w-[350px] sm:max-w-[300px] lg:max-w-[500px]"
+                  width={400}
+                  height={300}
+                  className="h-auto w-full max-w-[300px] object-cover sm:max-w-[250px] lg:max-w-[400px]"
                   priority={false}
+                  unoptimized={true}
                 />
               </div>
             </div>
 
-            {/* GIF 33 */}
+            {/* GIF 211 */}
             <div className="flex justify-center">
               <div className="overflow-hidden rounded-2xl shadow-lg">
                 <Image
-                  src="https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/home/33.gif"
+                  src="/assets/img/for_home/211.gif"
                   alt="Fun GIF 2"
-                  width={500}
-                  height={375}
-                  className="h-auto w-full max-w-[350px] sm:max-w-[300px] lg:max-w-[500px]"
+                  width={400}
+                  height={300}
+                  className="h-auto w-full max-w-[300px] object-cover sm:max-w-[250px] lg:max-w-[400px]"
                   priority={false}
+                  unoptimized={true}
                 />
               </div>
             </div>
 
-            {/* GIF 34 */}
+            {/* GIF 34 - with better handling for large file */}
             <div className="flex justify-center sm:col-span-2 lg:col-span-1">
               <div className="overflow-hidden rounded-2xl shadow-lg">
                 <Image
-                  src="https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/home/34.gif"
+                  src="/assets/img/for_home/34.gif"
                   alt="Fun GIF 3"
-                  width={500}
-                  height={375}
-                  className="h-auto w-full max-w-[350px] sm:max-w-[300px] lg:max-w-[500px]"
+                  width={400}
+                  height={300}
+                  className="h-auto w-full max-w-[300px] object-cover sm:max-w-[250px] lg:max-w-[400px]"
                   priority={false}
+                  unoptimized={true}
+                  onError={(e) => {
+                    console.warn(
+                      "Failed to load 34.gif - file might be too large (7.9MB)"
+                    );
+                    // Hide the container if GIF fails to load
+                    const target = e.target as HTMLImageElement;
+                    if (target.parentElement?.parentElement) {
+                      target.parentElement.parentElement.style.display = "none";
+                    }
+                  }}
                 />
               </div>
             </div>
@@ -424,10 +285,7 @@ const Home = () => {
           columnClassName="flex flex-col gap-4"
         >
           {imageUrls.map((url, index) => {
-            const isVisible = visibleImages.includes(index);
             const isLoaded = loadedImages.has(index);
-
-            if (!isVisible) return null;
 
             return (
               <div key={index} className="relative overflow-hidden rounded-lg">
@@ -455,33 +313,12 @@ const Home = () => {
                   onError={() => handleImageError(index)}
                   loading={index < (isMobile ? 2 : 4) ? "eager" : "lazy"}
                   quality={80} // Slightly reduced quality for faster loading
+                  unoptimized={false} // Let Next.js optimize the images
                 />
               </div>
             );
           })}
         </Masonry>
-
-        {/* Loading indicator for remaining images */}
-        {visibleImages.length < imagesCount && (
-          <div ref={loadingRef} className="mt-8 text-center">
-            {isPageVisible ? (
-              <>
-                <div className="inline-block size-8 animate-spin rounded-full border-4 border-my-color border-t-transparent"></div>
-                <p className="mt-2 text-sm text-gray-600">
-                  Loading more images... ({visibleImages.length}/{imagesCount})
-                </p>
-              </>
-            ) : (
-              <>
-                <div className="inline-block size-8 rounded-full border-4 border-gray-300"></div>
-                <p className="mt-2 text-sm text-gray-500">
-                  Loading paused - page not visible ({visibleImages.length}/
-                  {imagesCount})
-                </p>
-              </>
-            )}
-          </div>
-        )}
 
         {/* Go Up Button - Mobile Only */}
         <button
