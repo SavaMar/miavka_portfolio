@@ -4,6 +4,7 @@
     "projects": "Projects",
     "collages": "Collages",
     "art": "Art",
+    "work": "Work",
     "blog": "Blog",
     "books": "Books",
     "about": "About me",
@@ -119,7 +120,7 @@
     }
   },
   "contact": {
-    "title": "Contact",
+    "title": "Let's Connect!",
     "welcome": {
       "title": "Let's Connect!"
     },

@@ -271,12 +271,12 @@ const BooksPage = () => {
           {filteredBooks.map((book: Book) => (
             <div
               key={book.id}
-              className="group cursor-pointer"
+              className="group cursor-pointer h-full"
               onClick={() => handleBookClick(book)}
             >
-              <div className="overflow-hidden rounded-lg bg-white shadow-lg transition-all duration-300 hover:shadow-xl group-hover:scale-105">
+              <div className="flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-lg transition-all duration-300 hover:shadow-xl group-hover:scale-105">
                 {/* Book Cover */}
-                <div className="relative aspect-[3/4]">
+                <div className="relative aspect-[3/4] flex-shrink-0">
                   {book.cover && !imageErrors.has(book.id) ? (
                     <Image
                       src={book.cover}
@@ -301,10 +301,10 @@ const BooksPage = () => {
                   <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
                 </div>
 
-                {/* Score and Hashtags - Integrated into the card */}
-                <div className="space-y-2 p-2">
+                {/* Score and Hashtags - Fixed height section */}
+                <div className="flex flex-col justify-between p-2 flex-1 min-h-[80px]">
                   {/* Score */}
-                  <div className="flex justify-center">
+                  <div className="flex justify-center mb-2">
                     <div className="rounded-full bg-white/90 px-2 py-1 shadow-sm">
                       {getScoreDisplay(book["my-score"])}
                     </div>

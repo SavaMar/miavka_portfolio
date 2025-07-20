@@ -16,6 +16,7 @@ import { useLocale, useTranslations } from "next-intl";
 
 const navigationItems = [
   { href: "/art", label: "art", icon: Palette },
+  { href: "/work", label: "work", icon: Palette },
   { href: "/blog", label: "blog", icon: Notebook },
   { href: "/books", label: "books", icon: Book },
   { href: "/about", label: "about", icon: Puzzle },

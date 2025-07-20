@@ -34,7 +34,7 @@ export default function GalleryPage({ params }: GalleryPageProps) {
   // Hooks must be at the top level
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
 
   const collection = collections.find((col) => col.id === id);
 
@@ -66,47 +66,65 @@ export default function GalleryPage({ params }: GalleryPageProps) {
           className="hero-bg flex gap-4 rounded-lg p-10"
           columnClassName="flex flex-col gap-4"
         >
-          {imageUrls.map((url, index) => (
-            <div key={index} className="relative overflow-hidden rounded-lg">
-              <Dialog open={isOpen} onOpenChange={setIsOpen}>
-                <DialogTrigger asChild>
-                  <button
-                    onClick={() => {
-                      setSelectedImage(url);
-                      setIsOpen(true);
-                    }}
-                  >
-                    <Image
-                      src={url}
-                      alt={`Image ${index + 1}`}
-                      // layout="responsive"
-                      width={500}
-                      height={300}
-                      onLoad={() => setIsLoaded(true)}
-                      loading="lazy"
-                      className={`h-auto w-full rounded-lg object-cover hover:opacity-45 ${isLoaded ? "image-loaded" : "image-blur"}`}
-                    />
-                  </button>
-                </DialogTrigger>
-                {selectedImage && (
-                  <DialogContent className="flex items-center justify-center">
-                    {/* <div className="h-screen"> */}
-                    <Image
-                      src={selectedImage}
-                      alt={`Full size of Image ${index + 1}`}
-                      // layout="fill" // Fill the screen height
-                      objectFit="contain" // Scale image to fit within the dialog
-                      layout="responsive"
-                      width={200}
-                      height={200}
-                      className="rounded-lg object-contain"
-                    />
-                    {/* </div> */}
-                  </DialogContent>
+          {imageUrls.map((url, index) => {
+            const isLoaded = loadedImages.has(index);
+
+            return (
+              <div key={index} className="relative overflow-hidden rounded-lg">
+                {/* Loading skeleton - show until image is loaded */}
+                {!isLoaded && (
+                  <div className="absolute inset-0 z-10 flex items-center justify-center rounded-lg bg-gray-200">
+                    <div className="flex flex-col items-center gap-2">
+                      <div className="size-8 animate-spin rounded-full border-4 border-my-color border-t-transparent"></div>
+                      <p className="text-xs text-gray-600">Loading...</p>
+                    </div>
+                  </div>
                 )}
-              </Dialog>
-            </div>
-          ))}
+
+                <Dialog open={isOpen} onOpenChange={setIsOpen}>
+                  <DialogTrigger asChild>
+                    <button
+                      onClick={() => {
+                        setSelectedImage(url);
+                        setIsOpen(true);
+                      }}
+                    >
+                      <Image
+                        src={url}
+                        alt={`Image ${index + 1}`}
+                        // layout="responsive"
+                        width={500}
+                        height={300}
+                        onLoad={() =>
+                          setLoadedImages(
+                            (prev) => new Set(Array.from(prev).concat(index))
+                          )
+                        }
+                        loading="lazy"
+                        className={`h-auto w-full rounded-lg object-cover hover:opacity-45 ${isLoaded ? "image-loaded" : "image-blur"}`}
+                      />
+                    </button>
+                  </DialogTrigger>
+                  {selectedImage && (
+                    <DialogContent className="flex items-center justify-center">
+                      {/* <div className="h-screen"> */}
+                      <Image
+                        src={selectedImage}
+                        alt={`Full size of Image ${index + 1}`}
+                        // layout="fill" // Fill the screen height
+                        objectFit="contain" // Scale image to fit within the dialog
+                        layout="responsive"
+                        width={200}
+                        height={200}
+                        className="rounded-lg object-contain"
+                      />
+                      {/* </div> */}
+                    </DialogContent>
+                  )}
+                </Dialog>
+              </div>
+            );
+          })}
         </Masonry>
         {button && (
           <div className="mt-4 w-full">

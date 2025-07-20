@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Masonry from "react-masonry-css";
-import { generateVersionedImageUrls } from "@/lib/utils";
+import HeroSection from "@/components/shared/HeroSection";
 
 const breakpointColumnsObj = {
   default: 4,
@@ -11,18 +11,36 @@ const breakpointColumnsObj = {
   500: 1,
 };
 
-const imagesCount = 25; // Total number of images
-const baseUrl = "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/home";
+const imagesCount = 31;
+const baseUrl = "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/work";
 
-const Home = () => {
+// Generate versioned image URLs with cache busting for mixed formats
+const generateWorkImageUrls = () => {
+  const urls: string[] = [];
+  const version = Date.now(); // Cache busting version
+
+  for (let i = 1; i <= imagesCount; i++) {
+    // Try .jpg first, then .png if .jpg doesn't exist
+    const jpgUrl = `${baseUrl}/${i}.jpg?v=${version}`;
+
+    // For now, we'll use .jpg as default, but you can adjust this logic
+    // based on which files actually exist in your storage
+    urls.push(jpgUrl);
+  }
+
+  return urls;
+};
+
+const imageUrls = generateWorkImageUrls();
+
+const Work = () => {
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
   const [visibleImages, setVisibleImages] = useState<number[]>([]);
   const [isMobile, setIsMobile] = useState(false);
+  const [isPageVisible, setIsPageVisible] = useState(true);
+
   const loadingRef = useRef<HTMLDivElement>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
-
-  // Generate versioned image URLs with cache busting
-  const imageUrls = generateVersionedImageUrls(baseUrl, imagesCount);
 
   // Detect screen size and set initial images
   useEffect(() => {
@@ -41,6 +59,17 @@ const Home = () => {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
+  // Page visibility detection
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      setIsPageVisible(!document.hidden);
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () =>
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, []);
+
   // Progressive loading with intersection observer
   useEffect(() => {
     if (observerRef.current) {
@@ -50,7 +79,11 @@ const Home = () => {
     observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && visibleImages.length < imagesCount) {
+          if (
+            entry.isIntersecting &&
+            visibleImages.length < imagesCount &&
+            isPageVisible
+          ) {
             // Load next batch of images based on screen size
             const batchSize = isMobile ? 2 : 4;
             const nextBatch: number[] = [];
@@ -82,35 +115,34 @@ const Home = () => {
         observerRef.current.disconnect();
       }
     };
-  }, [visibleImages.length, isMobile]);
+  }, [visibleImages.length, isMobile, isPageVisible]);
 
   const handleImageLoad = useCallback((index: number) => {
     setLoadedImages((prev) => new Set(Array.from(prev).concat(index)));
   }, []);
 
+  const handleImageError = useCallback((index: number) => {
+    // If .jpg fails, try .png
+    const currentUrl = imageUrls[index];
+    if (currentUrl.includes(".jpg")) {
+      const pngUrl = currentUrl.replace(".jpg", ".png");
+      // Update the URL in the array
+      imageUrls[index] = pngUrl;
+      // Force re-render by updating loaded images
+      setLoadedImages((prev) => {
+        const newSet = new Set(prev);
+        newSet.delete(index);
+        return newSet;
+      });
+    }
+  }, []);
+
   return (
     <>
-      <section className="hero-bg mb-10 flex h-80 w-full flex-wrap justify-between px-20 pr-10 pt-5">
-        <div className="relative flex">
-          <Image
-            src={`/assets/img/avatar.png`}
-            alt="hero"
-            width={290}
-            height={20}
-            className="relative -top-8 rounded-lg opacity-50 md:mx-7 md:opacity-100"
-          />
-          <div className="absolute -left-6 sm:left-0 sm:ml-7 md:relative md:mt-2 lg:mt-10 xl:ml-5">
-            <p className="mb-5 font-namu text-4xl font-extrabold text-my-color sm:text-6xl md:text-6xl lg:text-6xl">
-              MARI MIAVKA
-            </p>
-            <p className="not-white fw-300 mt-10 font-namu text-lg">
-              Create magic using mixed media technics combine painting,{" "}
-              <br></br>
-              cyanotype, photography, swiss nature with digital tools
-            </p>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        title="MY WORK"
+        description="My professional work and projects"
+      />
       <div className="mb-24 bg-neutral-100 p-5">
         <Masonry
           breakpointCols={breakpointColumnsObj}
@@ -125,9 +157,19 @@ const Home = () => {
 
             return (
               <div key={index} className="relative overflow-hidden rounded-lg">
+                {/* Loading skeleton - show until image is loaded */}
+                {!isLoaded && (
+                  <div className="absolute inset-0 z-10 flex items-center justify-center rounded-lg bg-gray-200">
+                    <div className="flex flex-col items-center gap-2">
+                      <div className="size-8 animate-spin rounded-full border-4 border-my-color border-t-transparent"></div>
+                      <p className="text-xs text-gray-600">Loading...</p>
+                    </div>
+                  </div>
+                )}
+
                 <Image
                   src={url}
-                  alt={`Self Portrait ${index + 1}`}
+                  alt={`Work ${index + 1}`}
                   className={`h-auto w-full rounded-lg object-cover transition-all duration-300 ${
                     isLoaded ? "image-loaded" : "image-blur"
                   }`}
@@ -136,6 +178,7 @@ const Home = () => {
                   sizes="(max-width: 500px) 100vw, (max-width: 700px) 50vw, (max-width: 1100px) 33vw, 25vw"
                   priority={index < (isMobile ? 2 : 4)} // Priority loading based on screen size
                   onLoad={() => handleImageLoad(index)}
+                  onError={() => handleImageError(index)}
                   loading={index < (isMobile ? 2 : 4) ? "eager" : "lazy"}
                   quality={80} // Slightly reduced quality for faster loading
                 />
@@ -147,10 +190,22 @@ const Home = () => {
         {/* Loading indicator for remaining images */}
         {visibleImages.length < imagesCount && (
           <div ref={loadingRef} className="mt-8 text-center">
-            <div className="inline-block size-8 animate-spin rounded-full border-4 border-my-color border-t-transparent"></div>
-            <p className="mt-2 text-sm text-gray-600">
-              Loading more images... ({visibleImages.length}/{imagesCount})
-            </p>
+            {isPageVisible ? (
+              <>
+                <div className="inline-block size-8 animate-spin rounded-full border-4 border-my-color border-t-transparent"></div>
+                <p className="mt-2 text-sm text-gray-600">
+                  Loading more images... ({visibleImages.length}/{imagesCount})
+                </p>
+              </>
+            ) : (
+              <>
+                <div className="inline-block size-8 rounded-full border-4 border-gray-300"></div>
+                <p className="mt-2 text-sm text-gray-500">
+                  Loading paused - page not visible ({visibleImages.length}/
+                  {imagesCount})
+                </p>
+              </>
+            )}
           </div>
         )}
       </div>
@@ -158,4 +213,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Work;

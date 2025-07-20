@@ -15,16 +15,7 @@ const ContactPage = () => {
       <HeroSection title={t("title")} description="" />
 
       {/* Content Section */}
-      <div className="mx-auto mt-10 max-w-6xl bg-white px-4 py-8 sm:px-6 sm:py-12 md:px-20">
-        {/* Welcome Message */}
-        <div className="mb-8 text-center sm:mb-12">
-          <div className="mx-auto max-w-3xl">
-            <h2 className="mb-4 text-2xl font-bold text-gray-900 sm:text-3xl">
-              {t("welcome.title")}
-            </h2>
-          </div>
-        </div>
-
+      <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12 md:px-20">
         {/* Contact Options */}
         <div className="mb-8 grid gap-6 sm:mb-12 sm:grid-cols-2 lg:grid-cols-3">
           {/* Email */}
