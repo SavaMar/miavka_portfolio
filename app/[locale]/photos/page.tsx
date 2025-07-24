@@ -2,16 +2,35 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import { useLocale } from "next-intl";
 import collections from "@/types/collections"; // Adjust the import path according to your project structure
 import Image from "next/image";
 import HeroSection from "@/components/shared/HeroSection";
 
-const page = () => {
+// Translation constants
+const TRANSLATIONS = {
+  en: {
+    title: "PHOTOS",
+    description:
+      "Here are my commercial photos and personal projects. I do mainly event photos and if you wanna hire me, there is a contact page for it.",
+  },
+  ua: {
+    title: "ФОТО",
+    description:
+      "Ось мої комерційні фотографії та особисті проєкти. Я займаюся переважно зйомкою подій, і якщо ви хочете мене найняти, є сторінка контактів для цього.",
+  },
+};
+
+const PhotosPage = () => {
+  const locale = useLocale();
+  const translations =
+    TRANSLATIONS[locale as keyof typeof TRANSLATIONS] || TRANSLATIONS.en;
+
   return (
     <section>
       <HeroSection
-        title="PHOTOS"
-        description="Here are my commertial photos and personal projects. I do mainly event photos and if you wanna hire me, there is a contact page for it."
+        title={translations.title}
+        description={translations.description}
       />
       <div className="mb-24 md:pb-24">
         <div className="grid w-full grid-cols-1 justify-between justify-items-stretch gap-6 p-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -42,4 +61,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default PhotosPage;

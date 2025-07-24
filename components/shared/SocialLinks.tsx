@@ -1,11 +1,24 @@
 // components/SocialLinks.tsx
 import React from "react";
+import { useLocale } from "next-intl";
 
 interface SocialLinksProps {
   className?: string;
+  locale?: string;
 }
 
-const SocialLinks: React.FC<SocialLinksProps> = ({ className }) => {
+const SocialLinks: React.FC<SocialLinksProps> = ({
+  className,
+  locale: propLocale,
+}) => {
+  const hookLocale = useLocale();
+  const locale = propLocale || hookLocale;
+
+  // YouTube link based on locale
+  const youtubeLink =
+    locale === "ua"
+      ? "https://www.youtube.com/@MariMiavka_ua"
+      : "https://www.youtube.com/@MariMiavkaWorld";
   return (
     <div
       className={`monserrat-a my-color mb-5 flex text-4xl font-extrabold sm:text-6xl md:text-6xl lg:text-7xl ${className || ""}`}
@@ -45,10 +58,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ className }) => {
       </a>
 
       {/* youtube */}
-      <a
-        href="https://www.youtube.com/@MariMiavkaWorld"
-        className="ml-2 cursor-pointer"
-      >
+      <a href={youtubeLink} className="ml-2 cursor-pointer">
         <svg
           width="32"
           height="32"
@@ -112,7 +122,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ className }) => {
       </a> */}
 
       {/* telegram */}
-      <a href="https://t.me/mari_sava" className="ml-2 cursor-pointer">
+      <a href="https://t.me/mari_miavka" className="ml-2 cursor-pointer">
         <svg
           width="32"
           height="32"

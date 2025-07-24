@@ -1,10 +1,18 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Menu, Notebook, Mail, Palette, Puzzle, Book } from "lucide-react";
+import {
+  Menu,
+  Notebook,
+  Mail,
+  Palette,
+  Puzzle,
+  Book,
+  ShoppingBag,
+} from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,6 +27,7 @@ const navigationItems = [
   { href: "/work", label: "work", icon: Palette },
   { href: "/blog", label: "blog", icon: Notebook },
   { href: "/books", label: "books", icon: Book },
+  { href: "/shop", label: "store", icon: ShoppingBag },
   { href: "/about", label: "about", icon: Puzzle },
   { href: "/contact", label: "contact", icon: Mail },
 ];
@@ -31,6 +40,11 @@ const languages = [
 const Navbar = () => {
   const locale = useLocale();
   const t = useTranslations("navigation");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const handleNavigation = () => {
+    setIsDropdownOpen(false);
+  };
 
   return (
     <nav className="flex flex-wrap items-center justify-between p-6 font-namu font-bold">
@@ -38,6 +52,7 @@ const Navbar = () => {
         <Link
           href={`/${locale}`}
           className="block w-full grow transition ease-in-out hover:text-slate-300 lg:flex lg:w-auto lg:items-center"
+          onClick={handleNavigation}
         >
           <Image
             src="/assets/img/logo.png"
@@ -45,13 +60,13 @@ const Navbar = () => {
             height={34}
             alt="Miavka logo"
           />
-          <p className="hidden pl-3 text-base text-my-color-light md:text-lg lg:block lg:text-xl">
+          <p className="hidden pl-3 text-base text-my-color-light hover:text-slate-300 md:text-lg lg:block lg:text-xl">
             Mari Miavka
           </p>
         </Link>
       </div>
       <div className="relative flex items-center">
-        <DropdownMenu>
+        <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="lg:hidden">
               {/* Burger Icon */}
@@ -64,7 +79,12 @@ const Navbar = () => {
                 <React.Fragment key={item.href}>
                   <DropdownMenuItem>
                     <item.icon color="#e95a4f" />
-                    <Link href={`/${locale}${item.href}`}>{t(item.label)}</Link>
+                    <Link
+                      href={`/${locale}${item.href}`}
+                      onClick={handleNavigation}
+                    >
+                      {t(item.label)}
+                    </Link>
                   </DropdownMenuItem>
                 </React.Fragment>
               ))}
@@ -100,6 +120,7 @@ const Navbar = () => {
                   : "font-bold text-white hover:bg-gray-200 hover:text-black"
               }`}
               aria-label={`Switch language to ${lang.name}`}
+              onClick={handleNavigation}
             >
               {lang.code.toUpperCase()}
             </Link>

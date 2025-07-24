@@ -10,7 +10,46 @@ import {
   Sparkles,
   ArrowUp,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+
+// Current activities section constants - Easy to edit and update
+const CURRENT_ACTIVITIES = {
+  en: {
+    lastUpdated: "Last updated: 22.07.2025",
+    reading: {
+      title: "Reading",
+      content:
+        '"The 5 types of wealth" by Sahil Bloom and "The E-Myth Revisited" by Michael E. Gerber. View all books I\'ve read →',
+    },
+    listening: {
+      title: "Listening",
+      content: '"Clear Thinking" Shane Parrish on Audible',
+    },
+    life: {
+      title: "Life",
+      content:
+        "Working on three projects at the moment, writing code. One for Ukrainians in Switzerland, one related to JiuJitsu industry in Switzerland, and the third one is this blog",
+    },
+  },
+  ua: {
+    lastUpdated: "Останнє оновлення: 22.07.2025",
+    reading: {
+      title: "Читаю",
+      content:
+        '"Творчий Акт" Рік Рубін та «Працювати на себе. Як не прогоріти в малому бізнесі» Майкл Е. Гербер. Дивитися всі прочитані мною книги →',
+    },
+    listening: {
+      title: "Слухаю",
+      content:
+        '"Ясне Мислення" Шейн Парріш на Audible. Англійською. Перекладу немає.',
+    },
+    life: {
+      title: "Життя",
+      content:
+        "Працюю над трьоми проєктами наразі, пишу код. Один для нас українців у Швейцарії, другий повʼязаний із JiuJitsu індустрією покишо у межах швейцарії, а третій це цей блог",
+    },
+  },
+};
 
 const breakpointColumnsObj = {
   default: 4,
@@ -36,6 +75,10 @@ const Home = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   const t = useTranslations("home");
+  const locale = useLocale();
+  const activities =
+    CURRENT_ACTIVITIES[locale as keyof typeof CURRENT_ACTIVITIES] ||
+    CURRENT_ACTIVITIES.en;
 
   // Generate image URLs once
   const imageUrls = generateHomeImageUrls();
@@ -101,7 +144,7 @@ const Home = () => {
               </h2>
               <div className="flex items-center gap-2 rounded-full border border-neutral-200 bg-white/60 px-3 py-1.5 text-xs text-neutral-600 backdrop-blur-sm sm:px-4 sm:py-2 sm:text-sm">
                 <span className="size-1.5 animate-pulse rounded-full bg-green-500 sm:size-2"></span>
-                <span>{t("nowPage.lastUpdated")}</span>
+                <span>{activities.lastUpdated}</span>
               </div>
             </div>
 
@@ -145,19 +188,42 @@ const Home = () => {
                     </div>
                     <div className="min-w-0 flex-1">
                       <h4 className="mb-2 text-base font-semibold text-neutral-900 sm:text-lg md:text-xl">
-                        {t("nowPage.activities.reading.title")}
+                        {activities.reading.title}
                       </h4>
                       <p className="text-sm text-neutral-700 sm:text-base">
-                        {t.rich("nowPage.activities.reading.content", {
-                          viewAllBooks: (chunks) => (
+                        {activities.reading.content.includes(
+                          "View all books"
+                        ) ? (
+                          <>
+                            {activities.reading.content.replace(
+                              "View all books →",
+                              ""
+                            )}
                             <Link
                               href="/books"
                               className="font-medium text-[#e95a4f] underline decoration-1 underline-offset-2 transition-colors hover:text-blue-500"
                             >
-                              {chunks}
+                              View all books →
                             </Link>
-                          ),
-                        })}
+                          </>
+                        ) : activities.reading.content.includes(
+                            "Дивитися всі прочитані мною книги"
+                          ) ? (
+                          <>
+                            {activities.reading.content.replace(
+                              "Дивитися всі прочитані мною книги →",
+                              ""
+                            )}
+                            <Link
+                              href="/books"
+                              className="font-medium text-[#e95a4f] underline decoration-1 underline-offset-2 transition-colors hover:text-blue-500"
+                            >
+                              Дивитися всі прочитані мною книги →
+                            </Link>
+                          </>
+                        ) : (
+                          activities.reading.content
+                        )}
                       </p>
                     </div>
                   </div>
@@ -169,10 +235,10 @@ const Home = () => {
                     </div>
                     <div className="min-w-0 flex-1">
                       <h4 className="mb-2 text-base font-semibold text-neutral-900 sm:text-lg md:text-xl">
-                        {t("nowPage.activities.listening.title")}
+                        {activities.listening.title}
                       </h4>
                       <p className="text-sm text-neutral-700 sm:text-base">
-                        {t("nowPage.activities.listening.content")}
+                        {activities.listening.content}
                       </p>
                     </div>
                   </div>
@@ -184,10 +250,10 @@ const Home = () => {
                     </div>
                     <div className="min-w-0 flex-1">
                       <h4 className="mb-2 text-base font-semibold text-neutral-900 sm:text-lg md:text-xl">
-                        {t("nowPage.activities.life.title")}
+                        {activities.life.title}
                       </h4>
                       <p className="text-sm text-neutral-700 sm:text-base">
-                        {t("nowPage.activities.life.content")}
+                        {activities.life.content}
                       </p>
                     </div>
                   </div>

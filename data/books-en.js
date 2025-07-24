@@ -495,17 +495,50 @@ export const books = [
   },
   {
     id: 33,
-    title: "The High 5 Habit",
+    title: "Let Them Theory",
     author: "Mel Robbins",
     cover: "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/Books/en-33.jpg",
-    description: "Take control of your life with one simple habit.",
-    hashtags: ["habits", "motivation", "self-improvement", "confidence"],
+    description:
+      "A powerful mindset shift for letting go of what you can't control and focusing on your own path.",
+    hashtags: ["mindset", "self-improvement", "motivation", "boundaries"],
     "my-score": "lifechanging",
     translation: ["en"],
     quotes: [
-      "The high five habit is about celebrating yourself.",
-      "You are the only person who can give yourself permission to succeed.",
-      "Confidence is not something you have, it's something you do.",
+      "Let them think what they want. You focus on what you can control.",
+      "When you stop trying to control others, you free yourself.",
+      "Let them judge, let them doubt, let them walk away. You keep going.",
+    ],
+  },
+  {
+    id: 34,
+    title: "Feeling Good",
+    author: "David D. Burns",
+    cover: "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/Books/en-34.jpg",
+    description:
+      "The classic guide to overcoming depression and improving your mood using cognitive behavioral therapy techniques.",
+    hashtags: ["psychology", "mental health", "self-help", "cbt"],
+    "my-score": "lifechanging",
+    translation: ["en", "ua"],
+    quotes: [
+      "You feel the way you think.",
+      "Every bad feeling you have is the result of your distorted negative thinking.",
+      "You can learn to change the way you think and feel.",
+    ],
+  },
+  {
+    id: 35,
+    title: "Useful Not True",
+    author: "Derek Sivers",
+    cover: "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/Books/en-34.jpg",
+    description:
+      "A collection of thought-provoking ideas that challenge you to focus on what is useful, not just what is true. Sivers encourages readers to adopt beliefs and perspectives that serve them, even if they're not universally 'true.'",
+    hashtags: ["philosophy", "mindset", "self-improvement", "thinking"],
+    "my-score": "lifechanging",
+    translation: ["en"],
+    quotes: [
+      "If it’s useful, keep it. If not, let it go.",
+      "Beliefs are tools, not truths.",
+      "You don’t need to be right, you need to be effective.",
     ],
   },
 ];

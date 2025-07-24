@@ -168,12 +168,12 @@ const BooksPage = () => {
 
           <div className="mb-6">
             <h1 className="mb-4 bg-gradient-to-r from-[#e95a4f] to-[#ff7a6f] bg-clip-text text-4xl font-bold text-transparent">
-              {locale === "ua" ? "Мої книги" : "My Books"}
+              {locale === "ua" ? "Прочитані мною книги" : "Books I've read"}
             </h1>
             <p className="text-lg text-gray-600">
               {locale === "ua"
-                ? "Колекція книг, які я прочитав і які змінили моє життя"
-                : "A collection of books I've read that have changed my life"}
+                ? "Колекція книг, які я прочитала і які вплинули на мене"
+                : "A collection of books I've read that have influenced me"}
             </p>
           </div>
         </div>
@@ -271,12 +271,12 @@ const BooksPage = () => {
           {filteredBooks.map((book: Book) => (
             <div
               key={book.id}
-              className="group cursor-pointer h-full"
+              className="group h-full cursor-pointer"
               onClick={() => handleBookClick(book)}
             >
               <div className="flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-lg transition-all duration-300 hover:shadow-xl group-hover:scale-105">
                 {/* Book Cover */}
-                <div className="relative aspect-[3/4] flex-shrink-0">
+                <div className="relative aspect-[3/4] shrink-0">
                   {book.cover && !imageErrors.has(book.id) ? (
                     <Image
                       src={book.cover}
@@ -302,9 +302,9 @@ const BooksPage = () => {
                 </div>
 
                 {/* Score and Hashtags - Fixed height section */}
-                <div className="flex flex-col justify-between p-2 flex-1 min-h-[80px]">
+                <div className="flex min-h-[80px] flex-1 flex-col justify-between p-2">
                   {/* Score */}
-                  <div className="flex justify-center mb-2">
+                  <div className="mb-2 flex justify-center">
                     <div className="rounded-full bg-white/90 px-2 py-1 shadow-sm">
                       {getScoreDisplay(book["my-score"])}
                     </div>

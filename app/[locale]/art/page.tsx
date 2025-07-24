@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Masonry from "react-masonry-css";
+import { useLocale } from "next-intl";
 import HeroSection from "@/components/shared/HeroSection";
 
 const breakpointColumnsObj = {
@@ -13,6 +14,25 @@ const breakpointColumnsObj = {
 
 const imagesCount = 23;
 const baseUrl = "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/art";
+
+// Translation constants
+const TRANSLATIONS = {
+  en: {
+    title: "ART",
+    description: "My art made for me, commercial and for fun",
+    loading: "Loading...",
+    loadingMore: "Loading more images...",
+    loadingPaused: "Loading paused - page not visible",
+  },
+  ua: {
+    title: "МИСТЕЦТВО",
+    description:
+      "Моє мистецтво, створене для себе, комерційне та для задоволення",
+    loading: "Завантаження...",
+    loadingMore: "Завантаження більше зображень...",
+    loadingPaused: "Завантаження призупинено - сторінка не видима",
+  },
+};
 
 // Generate versioned image URLs with cache busting for mixed formats
 const generateArtImageUrls = () => {
@@ -34,6 +54,10 @@ const generateArtImageUrls = () => {
 const imageUrls = generateArtImageUrls();
 
 const Art = () => {
+  const locale = useLocale();
+  const translations =
+    TRANSLATIONS[locale as keyof typeof TRANSLATIONS] || TRANSLATIONS.en;
+
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
   const [visibleImages, setVisibleImages] = useState<number[]>([]);
   const [isMobile, setIsMobile] = useState(false);
@@ -149,8 +173,8 @@ const Art = () => {
   return (
     <>
       <HeroSection
-        title="ART"
-        description="My art made for me, commercial and for fun"
+        title={translations.title}
+        description={translations.description}
       />
       <div className="mb-24 bg-neutral-100 p-5">
         <Masonry
@@ -171,7 +195,9 @@ const Art = () => {
                   <div className="absolute inset-0 z-10 flex items-center justify-center rounded-lg bg-gray-200">
                     <div className="flex flex-col items-center gap-2">
                       <div className="size-8 animate-spin rounded-full border-4 border-my-color border-t-transparent"></div>
-                      <p className="text-xs text-gray-600">Loading...</p>
+                      <p className="text-xs text-gray-600">
+                        {translations.loading}
+                      </p>
                     </div>
                   </div>
                 )}
@@ -203,14 +229,15 @@ const Art = () => {
               <>
                 <div className="inline-block size-8 animate-spin rounded-full border-4 border-my-color border-t-transparent"></div>
                 <p className="mt-2 text-sm text-gray-600">
-                  Loading more images... ({visibleImages.length}/{imagesCount})
+                  {translations.loadingMore} ({visibleImages.length}/
+                  {imagesCount})
                 </p>
               </>
             ) : (
               <>
                 <div className="inline-block size-8 rounded-full border-4 border-gray-300"></div>
                 <p className="mt-2 text-sm text-gray-500">
-                  Loading paused - page not visible ({visibleImages.length}/
+                  {translations.loadingPaused} ({visibleImages.length}/
                   {imagesCount})
                 </p>
               </>

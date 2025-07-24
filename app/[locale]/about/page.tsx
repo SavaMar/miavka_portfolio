@@ -1,22 +1,55 @@
 import React from "react";
 import Image from "next/image";
 import SocialLinks from "@/components/shared/SocialLinks";
-import { Button } from "@/components/ui/button";
+import { getAboutPageData } from "@/lib/markdownUtils";
 
-// Base URL for Instagram
-const instagramBaseUrl = "https://www.instagram.com/";
+// Translation constants
+const TRANSLATIONS = {
+  en: {
+    name: "MARI MIAVKA",
+    tagline:
+      "A spirit of rebellion and endless curiosity drives me to cast light into the shadows.",
+    storyText:
+      "My small story will be here, but for now you can look at my instagram to have an idea at least",
+    instagramLabels: {
+      lifestyle: "MY LIFESTYLE",
+      art: "MY ART",
+      sportDesigns: "SPORT CLOTH DESIGNS",
+      sportPhotography: "SPORT PHOTOGRAPHY/ VIDEOGRAPHY",
+      ukrainianArt: "Українською про мистецтво",
+    },
+  },
+  ua: {
+    name: "МАРІ МЯВКА",
+    tagline:
+      "Дух бунту та нескінченна цікавість змушують мене проливати світло в тіні.",
+    storyText:
+      "Моя невелика історія буде тут, але поки що можете подивитися мій інстаграм, щоб хоча б мати уявлення",
+    instagramLabels: {
+      lifestyle: "МІЙ СТИЛЬ ЖИТТЯ",
+      art: "МОЄ МИСТЕЦТВО",
+      sportDesigns: "ДИЗАЙН СПОРТИВНОГО ОДЯГУ",
+      sportPhotography: "СПОРТИВНА ФОТОГРАФІЯ/ ВІДЕОЗЙОМКА",
+      ukrainianArt: "Українською про мистецтво",
+    },
+  },
+};
 
-// Define Instagram links with only the specific user paths
-const instagramLinks = [
-  { path: "marisava33", label: "MY LIFESTYLE" },
-  { path: "mari_miavka", label: "MY ART" },
-  { path: "zla_miavka_bjj", label: "SPORT CLOTH DESIGNS" },
-  { path: "bjj_photographer", label: "SPORT PHOTOGRAPHY/ VIDEOGRAPHY" },
-  { path: "miavka_ua", label: "Українською про мистецтво" },
-];
+const Page = async ({ params }: { params: { locale: string } }) => {
+  const { locale } = params;
+  console.log("About page locale:", locale); // Debug log
 
-const Page = () => {
+  // Handle different locale formats
+  const normalizedLocale = locale === "uk" ? "ua" : locale;
+  const translations =
+    TRANSLATIONS[normalizedLocale as keyof typeof TRANSLATIONS] ||
+    TRANSLATIONS.en;
+
+  // Get about page content from markdown
+  const aboutData = await getAboutPageData(normalizedLocale);
+
   const imageIndexes = Array.from({ length: 6 }, (_, index) => index);
+
   return (
     <>
       <section className="hero-bg flex h-80 w-full flex-wrap justify-between px-20 pr-10 pt-5">
@@ -30,16 +63,16 @@ const Page = () => {
           />
           <div className="relative mt-7 xl:ml-5">
             <p className="mb-5 font-namu text-4xl font-extrabold text-my-color-light sm:text-6xl">
-              MARI MIAVKA
+              {translations.name}
             </p>
-            <SocialLinks />
+            <SocialLinks locale={normalizedLocale} />
             <p className="not-white fw-300 font-namu text-lg">
-              A spirit of rebellion and endless curiosity drives me to cast
-              light into the shadows.
+              {translations.tagline}
             </p>
           </div>
         </div>
       </section>
+
       <div className="container mx-auto p-4 md:mt-20">
         <div className="grid grid-cols-3 gap-4 md:grid-cols-6">
           {imageIndexes.map((index) => (
@@ -55,29 +88,15 @@ const Page = () => {
           ))}
         </div>
       </div>
-      <div className="mb-24 mt-10 rounded-lg bg-slate-300 p-10">
-        <p>
-          My small story will be here, but for now you can look at my instagram
-          to have an idea at least
-        </p>
-        <div>
-          {instagramLinks.map((link, index) => (
-            <Button
-              key={index}
-              variant="outline"
-              className={`ml-${index ? 5 : 0} text-teal-700 underline underline-offset-4`}
-            >
-              <a
-                href={`${instagramBaseUrl}${link.path}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link.label}
-              </a>
-            </Button>
-          ))}
+      {/* About me section */}
+      <section className="container mx-auto my-10 px-4">
+        <div className="rounded-2xl border border-neutral-200 bg-white/80 p-6 shadow-lg md:p-10">
+          <div
+            className="about-content"
+            dangerouslySetInnerHTML={{ __html: aboutData.contentHtml }}
+          />
         </div>
-      </div>
+      </section>
     </>
   );
 };

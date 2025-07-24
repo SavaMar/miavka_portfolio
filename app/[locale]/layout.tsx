@@ -33,7 +33,7 @@ export default async function RootLayout({
           <div className="pattern-background flex min-h-screen flex-col">
             <Navbar />
             <main className="flex-1">{children}</main>
-            <Footer />
+            <Footer locale={locale} />
           </div>
         </NextIntlClientProvider>
       </body>

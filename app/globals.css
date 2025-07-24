@@ -91,3 +91,71 @@
     overflow: hidden;
   }
 }
+
+/* Markdown content styling for now page */
+@layer components {
+  .markdown-content h2,
+  .markdown-content .section-header {
+    @apply mb-6 mt-12 text-2xl font-bold text-neutral-900 sm:text-3xl;
+  }
+
+  .markdown-content h2:first-child,
+  .markdown-content .section-header:first-child {
+    @apply mt-0;
+  }
+
+  .markdown-content p,
+  .markdown-content .section-paragraph {
+    @apply mb-6 text-sm text-neutral-700 leading-relaxed sm:text-base;
+  }
+
+  .markdown-content p:last-child,
+  .markdown-content .section-paragraph:last-child {
+    @apply mb-0;
+  }
+
+  .markdown-content a {
+    @apply text-blue-600 underline decoration-blue-300 underline-offset-1 hover:text-blue-800;
+  }
+
+  .markdown-content strong {
+    @apply font-semibold text-neutral-900;
+  }
+
+  .markdown-content > div {
+    @apply space-y-8;
+  }
+
+  .markdown-content > div > div {
+    @apply space-y-4;
+  }
+
+  /* About page markdown content styling */
+  .about-content .about-title {
+    @apply mb-6 text-2xl font-bold text-my-color-light md:text-3xl;
+  }
+
+  .about-content .about-section-title {
+    @apply mb-2 text-lg font-semibold text-my-color;
+  }
+
+  .about-content .about-subsection-title {
+    @apply mb-3 text-base font-semibold text-neutral-800;
+  }
+
+  .about-content .about-paragraph {
+    @apply mb-4 text-base text-neutral-800 md:text-lg;
+  }
+
+  .about-content .about-list {
+    @apply mb-4 space-y-2;
+  }
+
+  .about-content .about-list-item {
+    @apply text-base text-neutral-800 md:text-lg;
+  }
+
+  .about-content a {
+    @apply text-teal-700 underline underline-offset-4 hover:text-teal-800;
+  }
+}
