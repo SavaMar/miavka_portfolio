@@ -7,7 +7,7 @@ export const books = [
     description:
       "A legendary music producer's guide to creativity and the creative process.",
     hashtags: ["creativity", "art", "music", "inspiration"],
-    "my-score": "lifechanging",
+    "my-score": 5,
     translation: ["en", "ua"],
     quotes: [
       "Creativity is not a talent, it's a way of operating.",
@@ -529,7 +529,7 @@ export const books = [
     id: 35,
     title: "Useful Not True",
     author: "Derek Sivers",
-    cover: "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/Books/en-34.jpg",
+    cover: "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/Books/en-35.jpg",
     description:
       "A collection of thought-provoking ideas that challenge you to focus on what is useful, not just what is true. Sivers encourages readers to adopt beliefs and perspectives that serve them, even if they're not universally 'true.'",
     hashtags: ["philosophy", "mindset", "self-improvement", "thinking"],
@@ -539,6 +539,38 @@ export const books = [
       "If it’s useful, keep it. If not, let it go.",
       "Beliefs are tools, not truths.",
       "You don’t need to be right, you need to be effective.",
+    ],
+  },
+  {
+    id: 36,
+    title: "Clear Thinking",
+    author: "Shane Parrish",
+    cover: "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/Books/en-36.jpg",
+    description:
+      "I love this book! A practical guide to making better decisions by understanding and overcoming the hidden forces that cloud your judgment. What I loved most is the great explanation of our 'defaults': ego, emotions, habits, and more. His point of view and way of showing it and talking about it are great.",
+    hashtags: ["decision-making", "psychology", "self-improvement", "thinking"],
+    "my-score": 5,
+    translation: ["en"],
+    quotes: [
+      "You don’t rise to the level of your goals. You fall to the level of your systems.",
+      "Clear thinking is not about being smarter, but about removing the obstacles that cloud your judgment.",
+      "The quality of your decisions determines the quality of your life.",
+    ],
+  },
+  {
+    id: 37,
+    title: "Surely You're Joking, Mr. Feynman!",
+    author: "Richard Feynman",
+    cover: "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/Books/en-37.jpg",
+    description:
+      "The hilarious and inspiring autobiographical collection of stories from one of the most brilliant and curious physicists of the 20th century. Feynman's adventures, humor, and relentless curiosity make this book a joy to read and a motivation to always keep asking questions.",
+    hashtags: ["science", "physics", "autobiography", "motivation", "humor"],
+    "my-score": 5,
+    translation: ["en", "ua"],
+    quotes: [
+      "The most interesting thing is finding new questions, not answers.",
+      "I have a limited intelligence and I use it in a particular direction.",
+      "Life is an adventure, and science makes it even more interesting.",
     ],
   },
 ];

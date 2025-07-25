@@ -172,8 +172,8 @@ const BooksPage = () => {
             </h1>
             <p className="text-lg text-gray-600">
               {locale === "ua"
-                ? "Колекція книг, які я прочитала і які вплинули на мене"
-                : "A collection of books I've read that have influenced me"}
+                ? "Колекція книг, які я прочитала і які вплинули на мене. Більшу частину книжок я слухаю та читаю англійською і багато з них не мають перекладу або мають тільки російський переклад."
+                : "A collection of books I've read that have influenced me. I read and listen books in English, Ukrainian and Russion. It depends on availability, price and vocabulary."}
             </p>
           </div>
         </div>

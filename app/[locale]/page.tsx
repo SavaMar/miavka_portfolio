@@ -23,7 +23,8 @@ const CURRENT_ACTIVITIES = {
     },
     listening: {
       title: "Listening",
-      content: '"Clear Thinking" Shane Parrish on Audible',
+      content:
+        '"The courage to be disliked" written by Fumitake Koga and Ichiro Kishimi.',
     },
     life: {
       title: "Life",

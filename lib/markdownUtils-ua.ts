@@ -3,8 +3,21 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
+import { visit } from "unist-util-visit";
 
 const postsDirectory = path.join(process.cwd(), "posts-ua");
+
+// Custom remark plugin to handle iframes
+function remarkIframe() {
+  return function (tree: any) {
+    visit(tree, "html", (node) => {
+      if (node.value.includes("<iframe")) {
+        // Keep iframe HTML as is
+        return node;
+      }
+    });
+  };
+}
 
 interface ArticleSummaryData {
   id: string;
@@ -32,7 +45,14 @@ function parseDate(dateStr: string): Date {
 
 export function getSortedArticlesData(): ArticleSummaryData[] {
   const fileNames = fs.readdirSync(postsDirectory);
-  const allArticlesData = fileNames.map((fileName) => {
+
+  // Filter for .md files with date pattern (e.g., 23_07_25.md)
+  const articleFiles = fileNames.filter(
+    (fileName) =>
+      fileName.endsWith(".md") && /^\d{2}_\d{2}_\d{2}\.md$/.test(fileName)
+  );
+
+  const allArticlesData = articleFiles.map((fileName) => {
     const id = fileName.replace(/\.md$/, "");
 
     const fullPath = path.join(postsDirectory, fileName);
@@ -86,7 +106,8 @@ export async function getPostData(id: string): Promise<ArticleData> {
   const matterResult = matter(fileContents);
 
   const processedContent = await remark()
-    .use(html)
+    .use(remarkIframe)
+    .use(html, { sanitize: false })
     .process(matterResult.content);
   const contentHtml = processedContent.toString();
 

@@ -1,37 +1,16 @@
 # About Me
 
-So yeah, I’m from Kyiv. I’ve got a trophy and some medals from Bike Downhill competitions across Ukraine — that used to be super cool and fun. I’ve lived in Krakow (Poland), Berlin (Germany), Zurich (Switzerland), and now I’m based in a tiny Swiss village surrounded by cows, farmers, and endless fields. That’s where I live at the moment.
+So, I’m from Kyiv, Ukraine :D. In 2015, I won the cup and the title of Ukrainian champion in women’s Bike Downhill – those were some awesome times. My friends and I traveled all over Ukraine with our bikes, chasing medals :D – so I got to see a lot of the country and live in different cities, but I was always super curious about what it’s like “abroad.” At the end of 2016, I left Ukraine. I lived in Krakow, Berlin, and for the last 6 years, I’ve been hanging out in Switzerland.
 
-I’ve tattooed two pieces on myself — they’re beautiful and I adore them.
-Once, I launched a kinda-failed–kinda-successful Kickstarter. I didn’t hit my planned numbers in time, but I still sold more Jiu-Jitsu gear than I originally aimed for. So yeah, success in disguise.
+So here I am: riding DH and Pump Track, drawing, occasionally going to jiu-jitsu, taking photos, writing code, not really running much after knee surgery, but always coming up with something, reading, trying, learning, and constantly being curious about something. I love exploring the life around me, new ideas, perspectives, and hidden treasures in moments!
 
-Somehow I ended up being the person who photographs nearly every Jiu-Jitsu competition in Switzerland. I’ve got an American Bully with a Slovak passport, and I love her endlessly.
+I can honestly say I like being who I am. The death of a loved one from cancer, I think, changed me deeply. Our life is finite, and I realized that as long as I’m alive, I definitely want to experience things, to live through different things, like: launching my own project, turning it into a business and finding out what it’s really like to work for myself, having a few dogs, making cat-shaped pottery, getting experience in public speaking, finding out what it’s like to get a passport from another country, creating a couple of videos I’ve planned in my head and sharing them with people, giving my drawings to strangers on the street, trying to find out what it’s like to earn “enough” from my own projects... There’s still so much I don’t know and so much I want to feel and discover. The fear never really goes away, but watching cancer extinguish the sunshine inside my favorite person, that feeling that you can’t do anything about it... Now I can live and influence, rejoice, draw, experience, lose everything and find it all again – today I can do all of this, so I take fear by the hand and feel it, but I keep going, because getting those experiences while I’m alive is something I want more than just wanting and being afraid.
 
-I’ve started a couple of projects and now I’m coding for them. Between all that, I draw silly things, or make collages out of my own photos.
+# My Story
 
-Right now, I deeply love and value my freedom of thought, my life, and everything I have.
-But behind that inner lightness and freedom, there’s a path:
-I’ve been through caring for someone I loved through cancer, the war in Ukraine, falling off a cliff, knee surgery, and divorce.
-I carry all of that with me as a reminder:
-
-Life is finite.
-
-“Create and leave something behind” — that’s my drive to write, draw, and express myself boldly.
-
-Live, don’t imitate.
-
-That last one is mostly for myself.
-Because yes, a lot of things are scary, confusing, and sometimes it feels like everyone else has it all figured out, and you’re the only silly one just winging it — but that’s an illusion.
-And illusion doesn’t go well with life.
-Illusion is avoiding life.
-So I’m learning to be brave, to try, and to befriend my fears — just as they are.
-
-So that’s me:
-I ride DH and Pump Track, sometimes go to Jiu-Jitsu, take photos, write code, can’t run much since the knee surgery but I’m always making stuff up, reading, trying, learning, and staying endlessly curious.
-
-## My Story
-
-My small story will be here, but for now you can look at my instagram to have an idea at least.
+My little story will be here, but for now you can check out my Instagram to get at least some idea.
+I can say that Osho and Max Frei shaped my way of thinking, the lack of formal education shaped my fears and my resistance, and all the tough things that happened in my childhood made me a fighter.
+Now, having realized that I carry a huge, bright, hot, and living sun inside me – it’s inspiring! Be careful! This inspiration and brightness can be contagious, and after talking to me, you might also want to unlock your potential and explore your own strength of authenticity!
 
 ### Instagram Links
 

@@ -1,7 +1,6 @@
 ## READING
 
-Right now, I’m reading "Atomic Habits" by James Clear. I’m learning how to build better habits and get rid of bad ones. I’m also exploring "The Psychology of Money" by Morgan Housel.
-
+Right now, I’m listening "The courage to be disliked" written by Fumitake Koga, Ichiro Kishimi and reading "E-Myth" by Michael E. Gerber.
 [See all books →](/books)
 
 ## WORK
@@ -26,6 +25,6 @@ My boyfriend found a new job, and at the new job, they expect us to move closer.
 
 We’ve looked at a few apartments, and I really liked one of them... right now we’re sending in all the documents, and if things go the way I really, really hope, it will affect a huge number of things.
 
-## MISC
+## SOMETHING ELSE
 
 I started learning French. I used to always joke about it and thought French was a definite "no" for me, but over time I realized that the French-speaking part of Switzerland is more lively, people are more open, and the language, once you get into it, actually appeals to me much more. For context: I lived in Berlin briefly, then in Zurich, and then near Bern — in total, that’s 7 years in the German-speaking world, and with a lot of "pain" and reluctance, I passed the B1 spoken German exam, and even then... only because I knew exactly what I’d be asked — I memorized the text. I avoided German for many years, and now — suddenly, out of nowhere, I’ve found a love and some kind of joy in French... The new apartment we applied for is in the French-speaking part of Switzerland, and for the first time in my life, I looked at the language without disgust or fear, but with a sense of new possibilities and new experiences. It’s not scary — on the contrary! It’s very exciting and inspiring!
