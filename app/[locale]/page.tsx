@@ -3,51 +3,41 @@ import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Masonry from "react-masonry-css";
-import {
-  BookOpenText,
-  Headphones,
-  Sprout,
-  Sparkles,
-  ArrowUp,
-} from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 
 // Current activities section constants - Easy to edit and update
 const CURRENT_ACTIVITIES = {
   en: {
-    lastUpdated: "Last updated: 22.07.2025",
+    lastUpdated: "Last updated: 14.09.2025",
     reading: {
       title: "Reading",
-      content:
-        '"The 5 types of wealth" by Sahil Bloom and "The E-Myth Revisited" by Michael E. Gerber. View all books I\'ve read →',
+      content: "Currently reading 'Infinite Powers' by Steven Strogatz.",
     },
     listening: {
       title: "Listening",
-      content:
-        '"The courage to be disliked" written by Fumitake Koga and Ichiro Kishimi.',
+      content: "Listening to 'Company of one' by Paul Jarvis.",
     },
     life: {
       title: "Life",
       content:
-        "Working on three projects at the moment, writing code. One for Ukrainians in Switzerland, one related to JiuJitsu industry in Switzerland, and the third one is this blog",
+        "Working on three projects and learning French. Because I'm moving to a French-speaking town on October 1st.",
     },
   },
   ua: {
-    lastUpdated: "Останнє оновлення: 22.07.2025",
+    lastUpdated: "Останнє оновлення: 14.09.2025",
     reading: {
       title: "Читаю",
-      content:
-        '"Творчий Акт" Рік Рубін та «Працювати на себе. Як не прогоріти в малому бізнесі» Майкл Е. Гербер. Дивитися всі прочитані мною книги →',
+      content: "Зараз читаю «Творчий Акт» Рік Рубін.",
     },
     listening: {
       title: "Слухаю",
-      content:
-        '"Ясне Мислення" Шейн Парріш на Audible. Англійською. Перекладу немає.',
+      content: "Слухаю 'What's Your Dream?' Simon Squibb.",
     },
     life: {
       title: "Життя",
       content:
-        "Працюю над трьоми проєктами наразі, пишу код. Один для нас українців у Швейцарії, другий повʼязаний із JiuJitsu індустрією покишо у межах швейцарії, а третій це цей блог",
+        "Працюю над трьома проектами та вивчаю французьку мову. Бо я переїджаю 1го жовтня у франкомовне містечко.",
     },
   },
 };
@@ -151,134 +141,78 @@ const Home = () => {
 
             {/* Main content card */}
             <div className="overflow-hidden rounded-2xl border border-neutral-100 bg-white shadow-xl sm:rounded-3xl">
-              {/* Header section */}
-              <div className="bg-gradient-to-r from-[#252424] to-[#2a2a2a] p-4 text-white sm:p-6 md:p-8">
-                <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[#e95a4f] to-[#ff7a6f] sm:size-10 sm:rounded-xl md:size-12">
-                    <Sparkles className="size-4 sm:size-5 md:size-6" />
-                  </div>
-                  <div>
-                    <h3 className="mb-2 text-lg font-bold sm:mb-3 sm:text-xl md:text-2xl">
-                      {t("nowPage.sectionTitle")}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-neutral-200 sm:text-base md:text-lg">
-                      {t.rich("nowPage.description", {
-                        derekSivers: (chunks) => (
-                          <a
-                            href="https://sive.rs/nowff"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-semibold text-[#ff7a6f] underline decoration-2 underline-offset-2 transition-colors hover:text-[#e95a4f]"
-                          >
-                            {chunks}
-                          </a>
-                        ),
-                      })}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
               {/* Current activities section */}
               <div className="bg-white p-4 sm:p-6 md:p-8">
-                <div className="space-y-4 sm:space-y-5 md:space-y-6">
-                  {/* Reading */}
-                  <div className="flex items-start gap-4 rounded-lg border border-neutral-200 bg-neutral-50 p-4 sm:gap-5 sm:rounded-xl sm:p-5">
-                    <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[#252424] to-[#2a2a2a] sm:size-12">
-                      <BookOpenText className="size-5 text-white sm:size-6" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <h4 className="mb-2 text-base font-semibold text-neutral-900 sm:text-lg md:text-xl">
-                        {activities.reading.title}
-                      </h4>
-                      <p className="text-sm text-neutral-700 sm:text-base">
-                        {activities.reading.content.includes(
-                          "View all books"
-                        ) ? (
-                          <>
-                            {activities.reading.content.replace(
-                              "View all books →",
-                              ""
-                            )}
-                            <Link
-                              href="/books"
-                              className="font-medium text-[#e95a4f] underline decoration-1 underline-offset-2 transition-colors hover:text-blue-500"
-                            >
-                              View all books →
-                            </Link>
-                          </>
-                        ) : activities.reading.content.includes(
-                            "Дивитися всі прочитані мною книги"
-                          ) ? (
-                          <>
-                            {activities.reading.content.replace(
-                              "Дивитися всі прочитані мною книги →",
-                              ""
-                            )}
-                            <Link
-                              href="/books"
-                              className="font-medium text-[#e95a4f] underline decoration-1 underline-offset-2 transition-colors hover:text-blue-500"
-                            >
-                              Дивитися всі прочитані мною книги →
-                            </Link>
-                          </>
-                        ) : (
-                          activities.reading.content
-                        )}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Listening */}
-                  <div className="flex items-start gap-4 rounded-lg border border-neutral-200 bg-neutral-50 p-4 sm:gap-5 sm:rounded-xl sm:p-5">
-                    <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[#252424] to-[#2a2a2a] sm:size-12">
-                      <Headphones className="size-5 text-white sm:size-6" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <h4 className="mb-2 text-base font-semibold text-neutral-900 sm:text-lg md:text-xl">
-                        {activities.listening.title}
-                      </h4>
-                      <p className="text-sm text-neutral-700 sm:text-base">
-                        {activities.listening.content}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Life */}
-                  <div className="flex items-start gap-4 rounded-lg border border-neutral-200 bg-neutral-50 p-4 sm:gap-5 sm:rounded-xl sm:p-5">
-                    <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[#252424] to-[#2a2a2a] sm:size-12">
-                      <Sprout className="size-5 text-white sm:size-6" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <h4 className="mb-2 text-base font-semibold text-neutral-900 sm:text-lg md:text-xl">
-                        {activities.life.title}
-                      </h4>
-                      <p className="text-sm text-neutral-700 sm:text-base">
-                        {activities.life.content}
-                      </p>
-                    </div>
-                  </div>
+                <div className="space-y-3">
+                  <p className="text-neutral-700">
+                    <strong>{activities.reading.title}:</strong>{" "}
+                    {activities.reading.content}
+                    {locale === "ua" ? (
+                      <Link
+                        href="/books"
+                        className="ml-1 font-medium text-blue-500 underline decoration-1 underline-offset-2 transition-colors hover:text-blue-500"
+                      >
+                        Прочитані мною книги
+                      </Link>
+                    ) : (
+                      <Link
+                        href="/books"
+                        className="ml-1 font-medium text-blue-500 underline decoration-1 underline-offset-2 transition-colors hover:text-blue-500"
+                      >
+                        The books I&apos;ve read
+                      </Link>
+                    )}
+                  </p>
+                  <p className="text-neutral-700">
+                    <strong>{activities.listening.title}:</strong>{" "}
+                    {activities.listening.content}
+                  </p>
+                  <p className="text-neutral-700">
+                    <strong>{activities.life.title}:</strong>{" "}
+                    {activities.life.content}
+                  </p>
                 </div>
 
                 {/* CTA Button */}
                 <div className="mt-6 border-t border-gray-100 pt-4 sm:mt-8 sm:pt-6">
-                  <Link
-                    href="/now"
-                    className="group inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-[#e95a4f] to-[#ff7a6f] px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-[#a12d23] hover:bg-gradient-to-r hover:from-[#a12d23] hover:to-[#c34949] hover:shadow-xl sm:rounded-2xl sm:px-8 sm:py-4 sm:text-base"
-                  >
-                    <span>{t("nowPage.ctaButton")}</span>
-                    <svg
-                      className="ml-2 size-4 transition-transform group-hover:translate-x-1 sm:size-5"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
+                  <div className="space-y-3">
+                    <Link
+                      href="/now"
+                      className="group inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-[#e95a4f] to-[#ff7a6f] px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-[#a12d23] hover:bg-gradient-to-r hover:from-[#a12d23] hover:to-[#c34949] hover:shadow-xl sm:rounded-2xl sm:px-8 sm:py-4 sm:text-base"
                     >
-                      <path
-                        fillRule="evenodd"
-                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </Link>
+                      <span>{t("nowPage.ctaButton")}</span>
+                      <svg
+                        className="ml-2 size-4 transition-transform group-hover:translate-x-1 sm:size-5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </Link>
+
+                    {/* Telegram button - only show for Ukrainian locale */}
+                    {locale === "ua" && (
+                      <Link
+                        href="https://t.me/mari_miavka"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex w-full items-center justify-center rounded-xl bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-blue-600 hover:shadow-xl sm:rounded-2xl sm:px-8 sm:py-4 sm:text-base"
+                      >
+                        <span>мій телеграм канал</span>
+                        <svg
+                          className="ml-2 size-4 transition-transform group-hover:translate-x-1 sm:size-5"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                        </svg>
+                      </Link>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

@@ -2,6 +2,7 @@
 
 Right now, I’m listening "The courage to be disliked" written by Fumitake Koga, Ichiro Kishimi and reading "E-Myth" by Michael E. Gerber.
 [See all books →](/books)
+and amazing book of Stiven Strogatz "Infinite Powers: How Calculus Reveals the Secrets of the Universe"
 
 ## WORK
 
