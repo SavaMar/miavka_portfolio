@@ -573,4 +573,238 @@ export const books = [
       "Life is an adventure, and science makes it even more interesting.",
     ],
   },
+  {
+    id: 38,
+    title: "Never Enough: From Barista to Billionaire",
+    author: "Andrew Wilkinson",
+    cover: "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/Books/en-38.jpg",
+    description:
+      "The remarkable story of Andrew Wilkinson’s journey from running a small coffee shop to building a billion-dollar business empire. This book shares lessons on entrepreneurship, ambition, the cost of endless striving, and what it really means to have 'enough.'",
+    hashtags: [
+      "entrepreneurship",
+      "memoir",
+      "business",
+      "success",
+      "self-discovery",
+    ],
+    "my-score": 4,
+    translation: ["en"],
+    quotes: [
+      "There’s always another mountain to climb, but that doesn't mean you need to start the hike.",
+      "Enough is a moving target—unless you define it for yourself.",
+      "Success at the cost of happiness is failure in disguise.",
+    ],
+  },
+  {
+    id: 39,
+    title: "Feel-Good Productivity: How to Do More of What Matters to You",
+    author: "Ali Abdaal",
+    cover: "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/Books/en-39.jpg",
+    description:
+      "Ali Abdaal shares his science-backed strategies and personal experiences to show that being productive doesn’t have to mean being miserable. Instead, the path to doing more of what matters is through finding joy and fun in the process. A practical and optimistic guide to sustainable productivity and a happier work life.",
+    hashtags: ["productivity", "self-help", "motivation", "happiness", "work"],
+    "my-score": 4,
+    translation: ["en"],
+    quotes: [
+      "Fun is not the enemy of productivity—it's the fuel.",
+      "The most productive people are not those who work hardest, but those who enjoy their work the most.",
+      "You don’t have to choose between being productive and feeling good.",
+    ],
+  },
+  {
+    id: 40,
+    title: "The Mom Test",
+    author: "Rob Fitzpatrick",
+    cover: "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/Books/en-40.jpg",
+    description:
+      "A practical guide for entrepreneurs and creators on how to talk to customers and learn if your business is a good idea, even when everyone is lying to you (especially your mom). Cut through compliments and get to the truth with effective, non-leading questions.",
+    hashtags: [
+      "entrepreneurship",
+      "startup",
+      "customer development",
+      "business",
+      "communication",
+    ],
+    "my-score": 4,
+    translation: ["en", "ua"],
+    quotes: [
+      "The Mom Test is simple: talk about their life instead of your idea.",
+      "Trying to learn from customer conversations is like playing chess in the dark. Great questions are your flashlight.",
+      "Compliments are worthless, criticism is priceless.",
+    ],
+  },
+  {
+    id: 41,
+    title:
+      "$100M Offers: How To Make Offers So Good People Feel Stupid Saying No",
+    author: "Alex Hormozi",
+    cover: "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/Books/en-41.jpg",
+    description:
+      "A guide for entrepreneurs and business owners to craft irresistible offers that customers can’t refuse. Alex Hormozi breaks down the psychology, process, and tactics behind value creation, pricing, and business success.",
+    hashtags: [
+      "business",
+      "entrepreneurship",
+      "sales",
+      "marketing",
+      "strategy",
+    ],
+    "my-score": 5,
+    translation: ["en"],
+    quotes: [
+      "The number one reason companies fail: they can’t get customers to buy consistently.",
+      "If you offer more value than you take in payment, you’ll win.",
+      "Price is a symptom. Value is the cause.",
+    ],
+  },
+  {
+    id: 42,
+    title:
+      "DotCom Secrets: The Underground Playbook for Growing Your Company Online",
+    author: "Russell Brunson",
+    cover: "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/Books/en-42.jpg",
+    description:
+      "Russell Brunson's guide reveals proven sales funnels and online marketing tactics to help entrepreneurs systematically grow their business online. Packed with actionable frameworks, strategies, and stories for building an effective online presence and converting visitors into lifelong customers.",
+    hashtags: [
+      "business",
+      "marketing",
+      "entrepreneurship",
+      "sales",
+      "online business",
+    ],
+    "my-score": 4,
+    translation: ["en"],
+    quotes: [
+      "You're just one funnel away from having the business you want.",
+      "People don't buy because they understand you. They buy because you understand them.",
+      "The secret is to focus on building a value ladder with your customers.",
+    ],
+  },
+  {
+    id: 43,
+    title: "Same as Ever",
+    author: "Morgan Housel",
+    cover: "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/Books/en-43.jpg",
+    description:
+      "Morgan Housel explores the timeless lessons of human behavior and history, showing how many things remain unchanged despite constant change around us. A collection of stories and insights that help us understand risk, uncertainty, and why predictability comes from the things that never change.",
+    hashtags: [
+      "psychology",
+      "behavior",
+      "history",
+      "timeless lessons",
+      "economics",
+    ],
+    "my-score": 5,
+    translation: ["en"],
+    quotes: [
+      "The biggest risks are always what you think you know, but don’t.",
+      "Things change, but people’s behaviors often remain the same.",
+      "History is mostly the study of surprising things that once seemed obvious.",
+    ],
+  },
+  {
+    id: 44,
+    title: "What's Your Dream?",
+    author: "Simon Squibb",
+    cover: "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/Books/en-44.jpg",
+    description:
+      "Simon Squibb inspires readers to dream big and remove the barriers standing between them and their true desires. Filled with motivational stories, practical exercises, and tools to help you define and pursue your life's biggest ambitions.",
+    hashtags: [
+      "motivation",
+      "dreams",
+      "personal development",
+      "entrepreneurship",
+    ],
+    "my-score": 4,
+    translation: ["en"],
+    quotes: [
+      "The first step to achieving your dream is believing it's possible.",
+      "Ask yourself: What would you do if you couldn't fail?",
+      "Your dream matters, no matter how big or small.",
+    ],
+  },
+  {
+    id: 45,
+    title: "The Art of Spending Money",
+    author: "Morgan Housel",
+    cover: "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/Books/en-45.jpg",
+    description:
+      "Morgan Housel explores how money is spent, why we spend the way we do, and how changing our mindset can lead to greater happiness and fulfillment. Insightful and practical guide to understanding the psychology of spending.",
+    hashtags: ["money", "psychology", "personal finance", "happiness"],
+    "my-score": 5,
+    translation: ["en"],
+    quotes: [
+      "How you spend money can bring more joy than how you earn it.",
+      "Money is a tool, but your values decide what it builds.",
+      "Spending wisely is an art, not a science.",
+    ],
+  },
+  {
+    id: 46,
+    title: "Don't Believe Everything You Think (Expanded Edition)",
+    author: "Joseph Nguyen",
+    cover: "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/Books/en-46.jpg",
+    description:
+      "Joseph Nguyen challenges common beliefs about happiness and suffering, emphasizing the power of thought and perception. This expanded edition adds new insights and techniques for overcoming negative thinking and living more freely.",
+    hashtags: ["mindset", "psychology", "self-help", "happiness", "thoughts"],
+    "my-score": 5,
+    translation: ["en"],
+    quotes: [
+      "The root of suffering is believing the stories your mind tells you.",
+      "Freedom comes from questioning your thoughts, not believing them.",
+      "You are not your thoughts.",
+    ],
+  },
+  {
+    id: 47,
+    title: "Make Time",
+    author: "Jake Knapp, John Zeratsky",
+    cover: "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/Books/en-47.jpg",
+    description:
+      "A practical guide with actionable strategies to help you focus on what matters most every day. Written by the creators of Google Ventures’ sprint process, it combines productivity hacks and mindful approaches for a more intentional life.",
+    hashtags: ["productivity", "time management", "focus", "habits"],
+    "my-score": 4,
+    translation: ["en"],
+    quotes: [
+      "You don’t find time. You make it.",
+      "Focus on what matters most, and let the rest wait.",
+      "Small adjustments, repeated daily, lead to big changes.",
+    ],
+  },
+  {
+    id: 48,
+    title: "The Great Mental Models. Book 1",
+    author: "Shane Parrish",
+    cover: "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/Books/en-48.jpg",
+    description:
+      "Shane Parrish reveals foundational mental models from disciplines like physics, chemistry, and biology, providing frameworks for better thinking and decision-making. Essential reading for anyone looking to upgrade their problem-solving skills.",
+    hashtags: [
+      "mental models",
+      "decision making",
+      "critical thinking",
+      "philosophy",
+    ],
+    "my-score": 5,
+    translation: ["en"],
+    quotes: [
+      "You don’t rise to the level of your goals. You fall to the level of your systems.",
+      "Go to the basics first principles—what are you actually trying to do here?",
+      "You get further in life by avoiding stupidity than by seeking brilliance.",
+    ],
+  },
+  {
+    id: 49,
+    title: "Infinite Powers",
+    author: "Steven H. Strogatz",
+    cover: "https://filedn.com/lPmOLyYLDG0bQGSveFAL3WB/Books/en-49.jpg",
+    description:
+      "Steven Strogatz reveals how calculus shapes the world, from predicting the spread of disease to explaining the mysteries of the cosmos. A beautifully written exploration of mathematics and its profound impact on science.",
+    hashtags: ["math", "calculus", "science", "history", "nature"],
+    "my-score": 4,
+    translation: ["en"],
+    quotes: [
+      "Calculus is the language of the universe.",
+      "The world is in constant change, and calculus helps us make sense of it.",
+      "Great discoveries rest on simple, powerful ideas.",
+    ],
+  },
 ];
