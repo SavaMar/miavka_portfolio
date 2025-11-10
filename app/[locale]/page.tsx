@@ -9,35 +9,35 @@ import { useTranslations, useLocale } from "next-intl";
 // Current activities section constants - Easy to edit and update
 const CURRENT_ACTIVITIES = {
   en: {
-    lastUpdated: "Last updated: 14.09.2025",
+    lastUpdated: "Last updated: 10.11.2025",
     reading: {
       title: "Reading",
-      content: "Currently reading 'Infinite Powers' by Steven Strogatz.",
+      content: "Currently reading 'Chaos Theory' by Steven Strogatz.",
     },
     listening: {
       title: "Listening",
-      content: "Listening to 'Company of one' by Paul Jarvis.",
+      content: "Listening to 'The Myth of Normal' by Gabor Mate.",
     },
     life: {
       title: "Life",
       content:
-        "Working on three projects and learning French. Because I'm moving to a French-speaking town on October 1st.",
+        "Fell obsessed with working with colorful lights and projectors for photography!",
     },
   },
   ua: {
-    lastUpdated: "Останнє оновлення: 14.09.2025",
+    lastUpdated: "Останнє оновлення: 10.11.2025",
     reading: {
       title: "Читаю",
-      content: "Зараз читаю «Творчий Акт» Рік Рубін.",
+      content: "Зараз читаю «Теорія хаосу» Ствен Стріготц.",
     },
     listening: {
       title: "Слухаю",
-      content: "Слухаю 'What's Your Dream?' Simon Squibb.",
+      content: "Слухаю 'Міф про нормальність' Гáбора Мате.",
     },
     life: {
       title: "Життя",
       content:
-        "Працюю над трьома проектами та вивчаю французьку мову. Бо я переїджаю 1го жовтня у франкомовне містечко.",
+        "Повністю закотився в роботу з кольоровим світлом та проєкторами для фотографії!",
     },
   },
 };

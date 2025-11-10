@@ -1,3 +1,9 @@
+## LIFE
+
+This month has been wild! I completely fell in love with working with colorful lights and projectors together! Lately, I’ve been getting bored working with martial arts — the people there just like my photos because, for them, they’re simply nice pictures of themselves. But I’m an artist, I love developing my vision, trying new tools, and passionately improving everything. Right now, I feel like I’ve hit a sort of ceiling there, and the photos are just... beautiful, nothing more. On November 25th, I have my second knee surgery, so I’m trying to do as much as I can beforehand — photographing people, completing the WAB driving course to get my new license BEFORE the operation, and I’ll also be shooting IBJJF in Geneva and ADCC in Zurich.
+
+By the way, about photos and lights — I tried it all on myself and it turned out to be really hard! Being the model and setting everything up yourself is almost impossible. And you know what? If I like someone, I just invite them over. Yes, I literally approach people in the supermarket or while walking my dog. Sure, language can be a bit of a barrier, but so far it’s been working! We’ve been living at the new place for three weeks now, and throughout these three weeks, I randomly start conversations with people — I’ve already been invited to someone’s place twice. It’s awesome.
+
 ## READING
 
 Right now, I’m listening "The courage to be disliked" written by Fumitake Koga, Ichiro Kishimi and reading "E-Myth" by Michael E. Gerber.
@@ -19,12 +25,6 @@ Over the years of war, Switzerland has developed structure, organizations, and s
 You can click around the draft of my project here: [svoii.ch](https://svoii.ch), and if you’re interested in what, how, or want to contribute — here’s the [telegram chat](https://t.me/+RcRMiysu4vQ0NDUy).
 
 **3.** The third project is a logical continuation of my small [Jiu Jitsu events project](https://swissbjj.ch/en) in Switzerland, but now with potential clients and investors, and the opening of a company :) It’s going to be exciting!
-
-## LIFE
-
-My boyfriend found a new job, and at the new job, they expect us to move closer. There are a few nuances to this story. First: my dog isn’t allowed everywhere. Since I have an American Bully — a breed that’s considered "dangerous" here and there — this means the rules differ from country to country. The "beauty" of Switzerland is that it’s a country made up of countries (cantons) inside, so the rules can vary from one canton to another. This affects our mobility, plus there’s the extra challenge of finding a place to live where pets are allowed.
-
-We’ve looked at a few apartments, and I really liked one of them... right now we’re sending in all the documents, and if things go the way I really, really hope, it will affect a huge number of things.
 
 ## SOMETHING ELSE
 

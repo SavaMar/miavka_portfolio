@@ -587,7 +587,7 @@ export const books = [
       "success",
       "self-discovery",
     ],
-    "my-score": 4,
+    "my-score": 5,
     translation: ["en"],
     quotes: [
       "There’s always another mountain to climb, but that doesn't mean you need to start the hike.",
@@ -625,7 +625,7 @@ export const books = [
       "business",
       "communication",
     ],
-    "my-score": 4,
+    "my-score": 5,
     translation: ["en", "ua"],
     quotes: [
       "The Mom Test is simple: talk about their life instead of your idea.",
@@ -671,7 +671,7 @@ export const books = [
       "sales",
       "online business",
     ],
-    "my-score": 4,
+    "my-score": 5,
     translation: ["en"],
     quotes: [
       "You're just one funnel away from having the business you want.",
@@ -693,7 +693,7 @@ export const books = [
       "timeless lessons",
       "economics",
     ],
-    "my-score": 5,
+    "my-score": 4,
     translation: ["en"],
     quotes: [
       "The biggest risks are always what you think you know, but don’t.",
@@ -730,7 +730,7 @@ export const books = [
     description:
       "Morgan Housel explores how money is spent, why we spend the way we do, and how changing our mindset can lead to greater happiness and fulfillment. Insightful and practical guide to understanding the psychology of spending.",
     hashtags: ["money", "psychology", "personal finance", "happiness"],
-    "my-score": 5,
+    "my-score": 4,
     translation: ["en"],
     quotes: [
       "How you spend money can bring more joy than how you earn it.",
@@ -762,7 +762,7 @@ export const books = [
     description:
       "A practical guide with actionable strategies to help you focus on what matters most every day. Written by the creators of Google Ventures’ sprint process, it combines productivity hacks and mindful approaches for a more intentional life.",
     hashtags: ["productivity", "time management", "focus", "habits"],
-    "my-score": 4,
+    "my-score": 5,
     translation: ["en"],
     quotes: [
       "You don’t find time. You make it.",
